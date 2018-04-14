@@ -39,7 +39,7 @@ const BlogContent = styled.main`
 	& > p {
 		font-size: 1.05rem;
 		font-weight: 500;
-		line-height: 1.6rem;
+		line-height: 1.7rem;
 	}
 `;
 
@@ -53,25 +53,49 @@ const BlogContainer = styled.article`
 	}
 `;
 
-const BlogPost = (props) => {
-	const { data } = props;
+export const BlogPostTemplate = ({
+	content,
+	contentComponent,
+	date,
+	description,
+	tags,
+	title
+}) => (
+	<React.Fragment>
+		<Helmet title={`${title} - Blog`} />
+		<Main>
+			<BlogContainer>
+				<BlogHeader>
+					<span>{ moment(date).locale('nl').format('D MMMM, YYYY') }</span>
+					<h1>{ title }</h1>
+					<hr />
+					<p>{ description }</p>
+				</BlogHeader>
+				<BlogContent dangerouslySetInnerHTML={{ __html: content }} />
+			</BlogContainer>
+		</Main>
+	</React.Fragment>
+);
+
+BlogPostTemplate.propTypes = {
+	content: PropTypes.string.isRequired,
+	contentComponent: PropTypes.func,
+	description: PropTypes.string,
+	title: PropTypes.string,
+	helmet: PropTypes.instanceOf(Helmet)
+};
+
+const BlogPost = ({ data }) => {
 	const { markdownRemark: post } = data;
 
 	return (
-		<React.Fragment>
-			<Helmet title={`${post.frontmatter.title} - Blog`} />
-			<Main>
-				<BlogContainer>
-					<BlogHeader>
-						<span>{ moment(post.frontmatter.date).locale('nl').format('D MMMM, YYYY') }</span>
-						<h1>{ post.frontmatter.title }</h1>
-						<hr />
-						<p>{ post.frontmatter.description }</p>
-					</BlogHeader>
-					<BlogContent dangerouslySetInnerHTML={{ __html: post.html }} />
-				</BlogContainer>
-			</Main>
-		</React.Fragment>
+		<BlogPostTemplate
+			content={post.html}
+			date={post.frontmatter.date}
+			description={post.frontmatter.description}
+			tags={post.frontmatter.tags}
+			title={post.frontmatter.title}
+		/>
 	);
 };
 

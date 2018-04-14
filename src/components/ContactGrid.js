@@ -25,10 +25,16 @@ const ContactGridItem = styled(UnstyledContactGridItem)`
 	}
 
 	& > form {
+		margin: 0 auto;
+		width: 65%;
 
 		input,
 		textarea {
-			display: block;
+			width: 100%;
+			
+			&:not(:last-child) {
+				margin-bottom: 10px;
+			}
 		}
 	}
 `;

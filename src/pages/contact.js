@@ -1,17 +1,23 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import CTAButton from '../components/CTAButton';
+import Input, { TextArea } from '../components/Input';
 import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import ContactGrid, { ContactGridItem } from '../components/ContactGrid';
+
+const ContactHeader = PageHeader.extend`
+	padding-bottom: 56px;
+`;
 
 const ContactPage = (props) => (
 	<React.Fragment>
 		<Helmet title="Contact" />
 		<Main>
-			<PageHeader>
+			<ContactHeader>
 				<h1>Contact met Mac Select</h1>
-				<h2>Dit zijn uw opties</h2>
-			</PageHeader>
+				<p>Dit zijn uw opties</p>
+			</ContactHeader>
 			<ContactGrid>
 				<ContactGridItem href="tel:+31647028625">
 					<img src="/assets/images/phone-icon.png" />
@@ -32,28 +38,29 @@ const ContactPage = (props) => (
 				<ContactGridItem style={{ gridColumnEnd: 'span 2' }}>
 					<h2>Contactformulier</h2>
 					<p>
-						Stuur direct een bericht naar Mac Select via onderstaand formulier.
+						Stuur direct een bericht naar Mac Select via onderstaand formulier.<br />
 						Er wordt zo snel mogelijk contact met u opgenomen.
 					</p>
-					<form netlify>
-						<input
-							placeholder="Name"
+					<form name="contact" netlify>
+						<Input
+							placeholder="Naam"
 							required
 							type="text"
 						/>
-						<input
+						<Input
 							placeholder="E-mail"
 							required
 							type="email"
 						/>
-						<input
+						<Input
 							placeholder="Telefoon (optioneel)"
 							type="tel"
 						/>
-						<textarea
+						<TextArea
 							placeholder="Bericht"
+							rows={6}
 						/>
-						<button type="submit">Verstuur</button>
+						<CTAButton type="submit">Verstuur</CTAButton>
 					</form>
 				</ContactGridItem>
 				<ContactGridItem href="https://goo.gl/maps/nj6eWzxXzN22">
