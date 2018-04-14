@@ -1,48 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
+import Hero from '../components/Hero';
+import Main from '../components/Main';
+import { isBlogPost } from '../helpers';
+import { filter, take } from 'lodash';
+import SleekGrid, { SleekGridItem } from '../components/SleekGrid';
 
-export default class IndexPage extends React.Component {
-	render() {
-		const { data } = this.props;
-		const { edges: posts } = data.allMarkdownRemark;
+const IndexPage = (props) => {
+	const { data } = props;
+	const { edges } = data.allMarkdownRemark;
 
-		return (
-			<section className="section">
-				<div className="container">
-					<div className="content">
-						<h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
-					</div>
-					{posts
-						.filter(post => post.node.frontmatter.templateKey === 'blog-post')
-						.map(({ node: post }) => (
-							<div
-								className="content"
-								style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
-								key={post.id}
-							>
-								<p>
-									<Link className="has-text-primary" to={post.fields.slug}>
-										{post.frontmatter.title}
-									</Link>
-									<span> &bull; </span>
-									<small>{post.frontmatter.date}</small>
-								</p>
-								<p>
-									{post.excerpt}
-									<br />
-									<br />
-									<Link className="button is-small" to={post.fields.slug}>
-                    Keep Reading →
-									</Link>
-								</p>
-							</div>
-						))}
-				</div>
-			</section>
-		);
-	}
-}
+	return (
+		<Main bg="#f6f6f6">
+			<Hero src="/assets/images/mac_book_pro_2016.png">
+				<h1>Welkom bij Mac Select</h1>
+				<h2><Link to="/aanbod">Bekijk het huidige aanbod</Link></h2>
+				<p>
+					Bent u opzoek naar een betrouwbare en betaalbare tweedehands Mac? Dan bent u bij Mac Select aan het juiste adres!
+					Mac Select heeft uitsluitend geselecteerde en betrouwbare tweedehands Macs te koop.
+				</p>
+			</Hero>
+			<Hero src="/assets/images/mac_book_pro_2016_alt.png" rtl>
+				<h1>Uw Mac verkopen</h1>
+				<h2><Link to="/verkopen">Doe de prijscheck</Link></h2>
+				<p>
+					Bent u van plan uw Mac te verkopen? Check binnen één minuut wat u van Mac Select voor uw Mac kunt krijgen en maak
+					met één druk op de knop de verkoop rond.
+				</p>
+			</Hero>
+			<SleekGrid>
+				{ take(filter(edges, isBlogPost), 2).map(({ node: post }) => (
+					<SleekGridItem
+						cta={{ ctaValue: post.fields.slug, ctaText: 'Lees blog' }}
+						title={post.frontmatter.title}
+					/>
+				)) }
+			</SleekGrid>
+		</Main>
+	);
+};
+
+export default IndexPage;
 
 IndexPage.propTypes = {
 	data: PropTypes.shape({
@@ -52,23 +51,24 @@ IndexPage.propTypes = {
 	})
 };
 
+// eslint-disable-next-line no-undef
 export const pageQuery = graphql`
-  query IndexQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
-      edges {
-        node {
-          excerpt(pruneLength: 400)
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            templateKey
-            date(formatString: "MMMM DD, YYYY")
-          }
-        }
-      }
-    }
-  }
+	query IndexBlogQuery {
+		allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+			edges {
+				node {
+					excerpt(pruneLength: 400)
+					id
+					fields {
+						slug
+					}
+					frontmatter {
+						title
+						templateKey
+						date
+					}
+				}
+			}
+		}
+	}
 `;
