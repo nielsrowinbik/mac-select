@@ -58,11 +58,12 @@ export const BlogPostTemplate = ({
 	contentComponent,
 	date,
 	description,
+	helmet,
 	tags,
 	title
 }) => (
 	<React.Fragment>
-		<Helmet title={`${title} - Blog`} />
+		{helmet}
 		<Main>
 			<BlogContainer>
 				<BlogHeader>
@@ -93,6 +94,7 @@ const BlogPost = ({ data }) => {
 			content={post.html}
 			date={post.frontmatter.date}
 			description={post.frontmatter.description}
+			helmet={<Helmet title={`${post.frontmatter.title} - Blog`} />}
 			tags={post.frontmatter.tags}
 			title={post.frontmatter.title}
 		/>

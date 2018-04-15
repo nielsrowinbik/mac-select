@@ -29,7 +29,7 @@
 	"scripts": {
 		"start": "npm run develop",
 		"build": "gatsby build",
-		"dev": "gatsby develop",
+		"dev": "gatsby develop --port 8080",
 		"lint": "eslint src",
 		"serve": "gatsby serve",
 		"test": "echo \"Error: no test specified\" && exit 1"

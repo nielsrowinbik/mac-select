@@ -19,11 +19,11 @@ const TemplateWrapper = ({ children }) => (
 			/>
 			<Navigation>
 				<h1><Link exact to="/">Mac Select</Link></h1>
-				<Link activeStyle to="/aanbod">Aanbod</Link>
-				<Link activeStyle to="/verkopen">Verkopen</Link>
-				<Link activeStyle to="/hulp">Hulp</Link>
-				<Link activeStyle to="/contact">Contact</Link>
-				<Link activeStyle to="/blog">Blog</Link>
+				<Link activeStyle={{}} to="/aanbod">Aanbod</Link>
+				<Link activeStyle={{}} to="/verkopen">Verkopen</Link>
+				<Link activeStyle={{}} to="/hulp">Hulp</Link>
+				<Link activeStyle={{}} to="/contact">Contact</Link>
+				<Link activeStyle={{}} to="/blog">Blog</Link>
 			</Navigation>
 			{children()}
 			<Footer>

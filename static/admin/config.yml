@@ -17,7 +17,48 @@ collections:
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Tags", name: "tags", widget: "list"}
+  
+  - name: "listing"
+    label: "Listing"
+    folder: "src/pages/aanbod"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Template Key"
+        name: "templateKey"
+        widget: "hidden"
+        default: "product"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Producttype"
+        name: "type"
+        widget: "select"
+        options: ["iMac", "iPad", "Macbook", "Macbook Air", "Macbook Pro", "Mac Pro"]
+      - label: "Formaat (inch)"
+        name: "size"
+        widget: "number"
+      - label: "Release"
+        name: "released"
+        widget: "object"
+        fields:
+          - label: "Moment"
+            name: "prefix"
+            widget: "select"
+            options: ["Begin", "Medio", "Eind"]
+          - label: "Jaar"
+            name: "year"
+            widget: "number"
+      - label: "Prijs"
+        name: "price"
+        widget: "object"
+        fields:
+          - label: "Originele"
+            name: "old"
+            widget: "number"
+          - label: "Nieuwe"
+            name: "new"
+            widget: "number"
 
   # - name: "pages"
   #   label: "Pages"
