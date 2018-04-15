@@ -1,16 +1,14 @@
+import { filter, map, take } from 'lodash';
 import React from 'react';
-import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
-import Hero from '../components/Hero';
 import Main from '../components/Main';
-import { isBlogPost } from '../helpers';
-import { filter, take } from 'lodash';
+import Hero from '../components/Hero';
+import Link from 'gatsby-link';
 import SleekGrid, { SleekGridItem } from '../components/SleekGrid';
+import { isBlogPost } from '../helpers';
 
-const IndexPage = (props) => {
-	const { data } = props;
-	const { edges } = data.allMarkdownRemark;
-
+const Home = () => {
+	const edges = [];
+	
 	return (
 		<Main bg="#f6f6f6">
 			<Hero src="/assets/images/mac_book_pro_2016.png">
@@ -30,7 +28,7 @@ const IndexPage = (props) => {
 				</p>
 			</Hero>
 			<SleekGrid>
-				{ take(filter(edges, isBlogPost), 2).map(({ node: post }) => (
+				{ map(take(filter(edges, isBlogPost), 2), ({ node: post }) => (
 					<SleekGridItem
 						cta={{ ctaValue: post.fields.slug, ctaText: 'Lees blog' }}
 						title={post.frontmatter.title}
@@ -41,34 +39,4 @@ const IndexPage = (props) => {
 	);
 };
 
-export default IndexPage;
-
-IndexPage.propTypes = {
-	data: PropTypes.shape({
-		allMarkdownRemark: PropTypes.shape({
-			edges: PropTypes.array
-		})
-	})
-};
-
-// eslint-disable-next-line no-undef
-export const pageQuery = graphql`
-	query IndexBlogQuery {
-		allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
-			edges {
-				node {
-					excerpt(pruneLength: 400)
-					id
-					fields {
-						slug
-					}
-					frontmatter {
-						title
-						templateKey
-						date
-					}
-				}
-			}
-		}
-	}
-`;
+export default Home;

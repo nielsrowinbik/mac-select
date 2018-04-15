@@ -1,6 +1,5 @@
 import 'typeface-open-sans';
 import React from 'react';
-import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import Footer from '../components/Footer';
@@ -25,7 +24,7 @@ const TemplateWrapper = ({ children }) => (
 				<Link activeStyle={{}} to="/contact">Contact</Link>
 				<Link activeStyle={{}} to="/blog">Blog</Link>
 			</Navigation>
-			{children()}
+			{ children() }
 			<Footer>
 				<section>
 					<div>
@@ -54,9 +53,5 @@ const TemplateWrapper = ({ children }) => (
 		</React.Fragment>
 	</ThemeProvider>
 );
-
-TemplateWrapper.propTypes = {
-	children: PropTypes.func
-};
 
 export default TemplateWrapper;

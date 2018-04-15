@@ -1,29 +1,22 @@
+const path = require('path');
+
 module.exports = {
 	siteMetadata: {
-		title: 'Gatsby + Netlify CMS Starter'
+		title: 'Mac Select'
 	},
 	plugins: [
 		'gatsby-plugin-react-helmet',
-		'gatsby-plugin-sass',
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
-				path: `${__dirname}/src/pages`,
-				name: 'pages'
-			}
-		},
-		'gatsby-plugin-sharp',
-		'gatsby-transformer-sharp',
-		{
-			resolve: 'gatsby-transformer-remark',
-			options: {
-				plugins: []
+				path: path.resolve(__dirname, 'src/pages/blog'),
+				name: 'blog'
 			}
 		},
 		{
 			resolve: 'gatsby-plugin-netlify-cms',
 			options: {
-				modulePath: `${__dirname}/src/cms/cms.js`
+				modulePath: path.resolve(__dirname, 'src/cms/cms.js')
 			}
 		}
 	]
