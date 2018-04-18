@@ -4,7 +4,7 @@ backend:
 
 display_url: https://mac-select.netlify.com
 media_folder: static/assets/images
-public_filder: /assets/images
+public_folder: /assets/images
 
 collections:
   - name: blog
