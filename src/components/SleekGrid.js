@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
 
-const UnstyledSleekGridItem = ({ cta: { ctaText, ctaValue }, isLarge, src, title, ...props }) => (
-	<Link {...props} to={ctaValue} style={{ backgroundImage: src }}>
+const UnstyledSleekGridItem = ({ cta: { ctaText, ctaValue }, isLarge, title, ...props }) => (
+	<Link {...props} to={ctaValue}>
 		<div>
 			<h2>{title}</h2>
 			<span>{ctaText}</span>
@@ -12,6 +12,7 @@ const UnstyledSleekGridItem = ({ cta: { ctaText, ctaValue }, isLarge, src, title
 );
 
 const SleekGridItem = styled(UnstyledSleekGridItem)`
+	background-image: url(${({ src }) => src});
 	background-position: center center;
 	background-size: cover;
 	height: ${({ isLarge }) => isLarge ? 400 : 200}px;

@@ -21,7 +21,14 @@ const ProductGridItem = styled(Link)`
 	& > div {
 		display: flex;
 		flex-wrap: nowrap;
+		justify-content: space-between;
 		text-decoration: none;
+
+		& > img {
+			height: 220px;
+			max-width: 300px;
+			object-fit: contain;
+		}
 
 		& > div {
 

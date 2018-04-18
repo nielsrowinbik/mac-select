@@ -20,6 +20,11 @@ storage:
   amount: 1000
   type: Harddisk
 state: Nieuwstaat
-images: []
+images:
+  - image: /assets/images/1513256544746.jpg
+  - image: /assets/images/1511432906088.jpg
+  - image: /assets/images/1511432907829.jpg
+  - image: /assets/images/1511432909365.jpg
+  - image: /assets/images/1511432908545.jpg
 ---
 

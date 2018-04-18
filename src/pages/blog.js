@@ -2,7 +2,7 @@ import React from 'react';
 import Main from '../components/Main';
 import Helmet from 'react-helmet';
 import BlogGrid, { BlogGridItem } from '../components/BlogGrid';
-import { map } from 'lodash';
+import { get, map } from 'lodash';
 import PageHeader from '../components/PageHeader';
 
 const BlogPage = (props) => {
@@ -29,10 +29,11 @@ const BlogPage = (props) => {
 				<BlogGrid>
 					{ map(posts, ({ node: { childMarkdownRemark: post } }) => (
 						<BlogGridItem
-							date={post.frontmatter.date}
-							title={post.frontmatter.title}
-							to={post.fields.slug}
-							key={post.id}
+							date={get(post, 'frontmatter.date')}
+							src={get(post, 'frontmatter.banner')}
+							title={get(post, 'frontmatter.title')}
+							to={`/blog${get(post, 'fields.slug')}`}
+							key={get(post, 'id')}
 						/>
 					))}
 				</BlogGrid>
@@ -55,6 +56,8 @@ export const pageQuery = graphql`
 							slug
 						}
 						frontmatter {
+							banner
+							date
 							title
 						}
 					}

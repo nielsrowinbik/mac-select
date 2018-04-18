@@ -38,6 +38,7 @@ const ProductSpecsTable = styled(UnstyledProductSpecsTable)`
 					font-weight: 400;
 					min-width: 155px;
 					width: 12.5vw;
+					white-space: nowrap;
 				}
 
 				&:last-child {

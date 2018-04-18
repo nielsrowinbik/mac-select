@@ -7,9 +7,10 @@ import Blog, { BlogHeader, BlogContent } from '../components/Blog';
 const BlogPostTemplate = ({
 	banner,
 	content,
+	date,
 	description,
+	html,
 	isCMSPreview,
-	published,
 	title
 }) => (
 	<React.Fragment>
@@ -17,14 +18,15 @@ const BlogPostTemplate = ({
 		<Main bg="#f6f6f6">
 			<Blog>
 				<BlogHeader>
-					<span>{ moment(published).locale('nl').format('D MMMM, YYYY') }</span>
+					<span>{ moment(date).locale('nl').format('D MMMM, YYYY') }</span>
 					<h1>{ title }</h1>
 					<hr />
 					<p>{ description }</p>
+					<img src={banner} />
 				</BlogHeader>
 				{ isCMSPreview
 					? <BlogContent>{ content }</BlogContent>
-					: <BlogContent dangerouslySetInnerHTML={{ __html: content }} /> }
+					: <BlogContent dangerouslySetInnerHTML={{ __html: html }} /> }
 			</Blog>
 		</Main>
 	</React.Fragment>
@@ -33,8 +35,9 @@ const BlogPostTemplate = ({
 const BlogPost = (props) => {
 	const { data } = props;
 	const { markdownRemark: post } = data;
+	const { frontmatter, ...rest } = post;
 
-	return <BlogPostTemplate {...post.frontmatter} />;
+	return <BlogPostTemplate {...frontmatter} {...rest} />;
 };
 
 export { BlogPost, BlogPostTemplate };
@@ -47,6 +50,9 @@ export const pageQuery = graphql`
 			id
 			html
 			frontmatter {
+				banner
+				date
+				description
 				title
 			}
 		}

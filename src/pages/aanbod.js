@@ -2,7 +2,7 @@ import React from 'react';
 import Main from '../components/Main';
 import ProductGrid, { ProductGridItem } from '../components/ProductGrid';
 import PageHeader from '../components/PageHeader';
-import { map } from 'lodash';
+import { get, map } from 'lodash';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 
@@ -36,38 +36,26 @@ const AanbodPage = (props) => {
 					<Link to="/hulp">Help me met kiezen</Link>
 				</AanbodHeader>
 				<ProductGrid>
-					{ map(products, ({ node: { childMarkdownRemark: product } }) => {
-						const { fields, frontmatter } = product;
-						const { slug } = fields;
-						const {
-							cpu,
-							gpu,
-							price,
-							ram,
-							storage,
-							title
-						} = frontmatter;
-
-						return (
-							<ProductGridItem
-								key={slug}
-								to={`/aanbod${slug}`}
-							>
-								<h2>{title}</h2>
+					{ map(products, ({ node: { childMarkdownRemark: product } }) => (
+						<ProductGridItem
+							key={get(product, 'fields.slug')}
+							to={`/aanbod${get(product, 'fields.slug')}`}
+						>
+							<h2>{get(product, 'frontmatter.title')}</h2>
+							<div>
 								<div>
-									<img />
-									<div>
-										<h3><s>&euro;{price.old}</s> <strong>&euro;{price.new}</strong></h3>
-										{ cpu && <p>{cpu.name} ({cpu.speed} GHz)</p> }
-										{ ram && <p>{ram} GB werkgeheugen</p> }
-										{ storage && <p>{storage.amount} GB opslag ({storage.type})</p> }
-										{ gpu && <p>{gpu.name}</p> }
-										<p>Meer informatie</p>
-									</div>
+									<h3><s>&euro;{get(product, 'frontmatter.price.old')}</s> <strong>&euro;{get(product, 'frontmatter.price.new')}</strong></h3>
+									{ get(product, 'frontmatter.cpu') && <p>{get(product, 'frontmatter.cpu.name')} ({get(product, 'frontmatter.cpu.speed')} GHz)</p> }
+									{ get(product, 'frontmatter.ram') && <p>{get(product, 'frontmatter.ram')} GB werkgeheugen</p> }
+									{ get(product, 'frontmatter.storage') && <p>{get(product, 'frontmatter.storage.amount')} GB opslag ({get(product, 'frontmatter.storage.type')})</p> }
+									{ get(product, 'frontmatter.gpu') && <p>{get(product, 'frontmatter.gpu.name')}</p> }
+									{ get(product, 'frontmatter.other.box') && <p>In originele doos</p> }
+									<p>Meer informatie</p>
 								</div>
-							</ProductGridItem>
-						);
-					}) }
+								<img src={get(product, 'frontmatter.images[0].image')} />
+							</div>
+						</ProductGridItem>
+					)) }
 				</ProductGrid>
 			</Main>
 		</React.Fragment>
@@ -94,6 +82,12 @@ export const pageQuery = graphql`
 							}
 							gpu {
 								name
+							}
+							images {
+								image
+							}
+							other {
+								box
 							}
 							price {
 								old

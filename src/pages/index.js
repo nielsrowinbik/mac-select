@@ -1,4 +1,4 @@
-import { filter, map, take } from 'lodash';
+import { filter, get, map, take } from 'lodash';
 import React from 'react';
 import Main from '../components/Main';
 import Hero from '../components/Hero';
@@ -35,17 +35,19 @@ const Home = (props) => {
 			<SleekGrid>
 				{ products.length >= 2 && map(take(products, 2), ({ node: { childMarkdownRemark: product } }) => (
 					<SleekGridItem
-						cta={{ ctaValue: `/aanbod${product.fields.slug}`, ctaText: 'Bekijk product' }}
+						cta={{ ctaValue: `/aanbod${get(product, 'fields.slug')}`, ctaText: 'Bekijk product' }}
 						isLarge
-						key={product.fields.slug}
-						title={product.frontmatter.title}
+						key={get(product, 'fields.slug')}
+						src={get(product, 'frontmatter.images[0].image')}
+						title={get(product, 'frontmatter.title')}
 					/>
 				)) }
 				{ posts.length >= 2 && map(take(posts, 2), ({ node: { childMarkdownRemark: post } }) => (
 					<SleekGridItem
-						cta={{ ctaValue: `/blog${post.fields.slug}`, ctaText: 'Lees blog' }}
-						key={post.fields.slug}
-						title={post.frontmatter.title}
+						cta={{ ctaValue: `/blog${get(post, 'fields.slug')}`, ctaText: 'Lees blog' }}
+						key={get(post, 'fields.slug')}
+						src={get(post, 'frontmatter.banner')}
+						title={get(post, 'frontmatter.title')}
 					/>
 				)) }
 			</SleekGrid>
@@ -68,7 +70,11 @@ export const pageQuery = graphql`
 							slug
 						}
 						frontmatter {
+							banner
 							title
+							images {
+								image
+							}
 						}
 					}
 				}

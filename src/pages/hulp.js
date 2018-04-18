@@ -2,7 +2,7 @@ import React from 'react';
 import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import { isBlogPost } from '../helpers';
-import { filter, map, take } from 'lodash';
+import { filter, get, map, take } from 'lodash';
 import Helmet from 'react-helmet';
 import SleekGrid, { SleekGridItem } from '../components/SleekGrid';
 
@@ -11,7 +11,7 @@ const HulpHeader = PageHeader.extend`
 `;
 
 const HulpPage = (props) => {
-	const edges = [];
+	const posts = get(props, 'data.allFile.edges');
 
 	return (
 		<React.Fragment>
@@ -24,10 +24,11 @@ const HulpPage = (props) => {
 					</p>
 				</HulpHeader>
 				<SleekGrid>
-					{ map(take(filter(edges, isBlogPost), 2), ({ node: post }) => (
+					{ posts.length >= 2 && map(take(posts, 2), ({ node: { childMarkdownRemark: post } }) => (
 						<SleekGridItem
-							cta={{ ctaValue: post.fields.slug, ctaText: 'Lees blog' }}
-							title={post.frontmatter.title}
+							cta={{ ctaValue: `/blog${get(post, 'fields.slug')}`, ctaText: 'Lees blog' }}
+							src={get(post, 'frontmatter.banner')}
+							title={get(post, 'frontmatter.title')}
 						/>
 					)) }
 				</SleekGrid>
@@ -37,3 +38,26 @@ const HulpPage = (props) => {
 };
 
 export default HulpPage;
+
+// eslint-disable-next-line no-undef
+export const pageQuery = graphql`
+	query HulpQuery {
+		allFile(filter: { sourceInstanceName: { eq: "blog" } name: { ne:".gitinclude" } }, limit: 2) {
+			edges {
+				node {
+					childMarkdownRemark {
+						id
+						fields {
+							slug
+						}
+						frontmatter {
+							banner
+							date
+							title
+						}
+					}
+				}
+			}
+		}
+	}
+`;

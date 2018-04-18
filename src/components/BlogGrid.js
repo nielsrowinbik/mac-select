@@ -21,13 +21,17 @@ const UnstyledBlogGridItem = ({ date, title, src, ...props }) => (
 );
 
 const BlogGridItem = styled(UnstyledBlogGridItem)`
+	background-color: #ffffff;
 	color: inherit;
 	display: flex;
 	flex-wrap: nowrap;
 	height: 400px;
 
+	:hover {
+		text-decoration: none;
+	}
+
 	& > div {
-		background-color: #ffffff;
 		flex: 0 0 250px;
 		padding: 34px 36px 0;
 
@@ -43,8 +47,9 @@ const BlogGridItem = styled(UnstyledBlogGridItem)`
 		}
 	}
 
-	:hover {
-		text-decoration: none;
+	& > img {
+		width: 100%;
+		object-fit: cover;
 	}
 `;
 

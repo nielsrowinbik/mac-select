@@ -6,6 +6,7 @@ import PageHeader from '../components/PageHeader';
 import ProductSpecsTable from '../components/ProductSpecsTable';
 import { container } from '../mixins';
 import styled from 'styled-components';
+import { map } from 'lodash';
 
 const ProductHeader = PageHeader.extend`
 	padding-bottom: 56px;
@@ -66,6 +67,18 @@ const ProductPageTemplate = ({
 					{
 						label: 'Grafische kaart',
 						value: '${gpu.name} (${gpu.memory} MB geheugen)'
+					},
+					{
+						label: 'Orginele doos',
+						value: '${other.box ? \'Ja\' : \'Nee\'}'
+					},
+					{
+						label: 'Orgineel aankoopbewijs',
+						value: '${other.receipt ? \'Ja\' : \'Nee\'}'
+					},
+					{
+						label: 'Productsoort',
+						value: '${other.vat ? \'BTW\' : \'Marge\'}'
 					}
 				]}
 			/>
@@ -101,6 +114,12 @@ export const pageQuery = graphql`
 				}
 				gpu {
 					name
+				}
+				images {
+					image
+				}
+				other {
+					box
 				}
 				price {
 					old
