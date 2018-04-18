@@ -45,7 +45,7 @@ const SleekGrid = styled.section`
 	grid-column-gap: 2px;
 	grid-row-gap: 2px;
 	grid-template-columns: 1fr 1fr;
-	/* grid-template-rows: 400px 200px; */
+	margin: 0 2px;
 `;
 
 export { SleekGrid, SleekGridItem };

@@ -4,11 +4,16 @@ import Main from '../components/Main';
 import Hero from '../components/Hero';
 import Link from 'gatsby-link';
 import SleekGrid, { SleekGridItem } from '../components/SleekGrid';
-import { isBlogPost } from '../helpers';
+import { isBlogPost, isProduct } from '../helpers';
 
-const Home = () => {
-	const edges = [];
-	
+const Home = (props) => {
+	const { data } = props;
+	const { allFile } = data;
+	const { edges } = allFile;
+
+	const posts = filter(edges, isBlogPost);
+	const products = filter(edges, isProduct);
+
 	return (
 		<Main bg="#f6f6f6">
 			<Hero src="/assets/images/mac_book_pro_2016.png">
@@ -28,9 +33,18 @@ const Home = () => {
 				</p>
 			</Hero>
 			<SleekGrid>
-				{ map(take(filter(edges, isBlogPost), 2), ({ node: post }) => (
+				{ products.length >= 2 && map(take(products, 2), ({ node: { childMarkdownRemark: product } }) => (
 					<SleekGridItem
-						cta={{ ctaValue: post.fields.slug, ctaText: 'Lees blog' }}
+						cta={{ ctaValue: `/aanbod${product.fields.slug}`, ctaText: 'Bekijk product' }}
+						isLarge
+						key={product.fields.slug}
+						title={product.frontmatter.title}
+					/>
+				)) }
+				{ posts.length >= 2 && map(take(posts, 2), ({ node: { childMarkdownRemark: post } }) => (
+					<SleekGridItem
+						cta={{ ctaValue: `/blog${post.fields.slug}`, ctaText: 'Lees blog' }}
+						key={post.fields.slug}
 						title={post.frontmatter.title}
 					/>
 				)) }
@@ -40,3 +54,25 @@ const Home = () => {
 };
 
 export default Home;
+
+// eslint-disable-next-line no-undef
+export const pageQuery = graphql`
+	query IndexQuery {
+		allFile(filter: { name: { ne:".gitinclude" } }) {
+			edges {
+				node {
+					sourceInstanceName
+					childMarkdownRemark {
+						id
+						fields {
+							slug
+						}
+						frontmatter {
+							title
+						}
+					}
+				}
+			}
+		}
+	}
+`;

@@ -2,12 +2,14 @@ backend:
   name: git-gateway
   branch: master
 
-media_folder: static/assets
-public_folder: /assets
+display_url: https://mac-select.netlify.com
+media_folder: static/assets/images
+public_filder: /assets/images
 
 collections:
   - name: blog
     label: Blog
+    label_singular: Post
     folder: src/pages/blog
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -31,8 +33,9 @@ collections:
       - name: body
         label: Body
         widget: markdown
-  - name: listing
-    label: Listing
+  - name: products
+    label: Products
+    label_singular: Product
     folder: src/pages/aanbod
     create: true
     slug: "{{slug}}"
@@ -41,6 +44,9 @@ collections:
         label: Template key
         widget: hidden
         default: product-page
+      - name: date
+        label: Publish date
+        widget: datetime
       - name: title
         label: Title
         widget: string
@@ -122,6 +128,42 @@ collections:
               - Harddisk
               - Fusion Drive
               - SSD
+      - name: accessories
+        label: Accessoires
+        widget: object
+        fields:
+          - name: mm
+            label: Magic Mouse
+            widget: boolean
+            required: false
+          - name: mt
+            label: Magic Trackpad
+            widget: boolean
+            required: false
+          - name: wk
+            label: Draadloos toetsenbord
+            widget: boolean
+            required: false
+          - name: nk
+            label: Numeriek toetsenbord
+            widget: boolean
+            required: false
+      - name: other
+        label: Overig
+        widget: object
+        fields:
+          - name: box
+            label: Originele doos aanwezig
+            widget: boolean
+            required: false
+          - name: receipt
+            label: Originele bon aanwezig
+            widget: boolean
+            required: false
+          - name: vat
+            label: Product is een BTW product
+            widget: boolean
+            required: false
       - name: state
         label: Staat
         widget: select

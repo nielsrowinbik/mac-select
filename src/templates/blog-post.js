@@ -30,4 +30,25 @@ const BlogPostTemplate = ({
 	</React.Fragment>
 );
 
-export { BlogPostTemplate };
+const BlogPost = (props) => {
+	const { data } = props;
+	const { markdownRemark: post } = data;
+
+	return <BlogPostTemplate {...post.frontmatter} />;
+};
+
+export { BlogPost, BlogPostTemplate };
+export default BlogPost;
+
+// eslint-disable-next-line no-undef
+export const pageQuery = graphql`
+	query BlogPostByID($id: String!) {
+		markdownRemark(id: { eq: $id }) {
+			id
+			html
+			frontmatter {
+				title
+			}
+		}
+	}
+`;

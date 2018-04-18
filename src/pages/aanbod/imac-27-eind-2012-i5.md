@@ -1,21 +1,21 @@
 ---
 templateKey: product-page
-title: iMac 27" i5 EIND 2013
+title: iMac 27" EIND 2012 i5
 type: iMac
 size: 27
 release:
   prefix: Eind
-  year: 2013
+  year: 2012
 price:
   new: 1199
-  old: 2299
+  old: 2099
 cpu:
   name: i5
-  speed: 3.4
+  speed: 3.2
 ram: 8
 gpu:
-  memory: 2048
-  name: NVIDIA GeForce GTX 775M
+  memory: 1024
+  name: NVIDIA GeForce 675X
 storage:
   amount: 1000
   type: Harddisk

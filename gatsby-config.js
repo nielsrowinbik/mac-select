@@ -14,6 +14,17 @@ module.exports = {
 			}
 		},
 		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				path: path.resolve(__dirname, 'src/pages/aanbod'),
+				name: 'aanbod'
+			}
+		},
+		{
+			resolve: 'gatsby-transformer-remark',
+			options: { plugins: [] }
+		},
+		{
 			resolve: 'gatsby-plugin-netlify-cms',
 			options: {
 				modulePath: path.resolve(__dirname, 'src/cms/cms.js')

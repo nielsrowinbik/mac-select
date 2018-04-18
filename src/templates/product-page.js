@@ -1,72 +1,121 @@
 import React from 'react';
 import Main from '../components/Main';
 import Helmet from 'react-helmet';
-import { get } from 'lodash';
 import Link from 'gatsby-link';
 import PageHeader from '../components/PageHeader';
+import ProductSpecsTable from '../components/ProductSpecsTable';
+import { container } from '../mixins';
+import styled from 'styled-components';
+
+const ProductHeader = PageHeader.extend`
+	padding-bottom: 56px;
+`;
+
+const ProductFooter = PageHeader.extend`
+	padding-top: 56px;
+`;
+
+const ProductSection = styled.section`
+	${container}
+`;
 
 const ProductPageTemplate = ({
-	cpu,
-	gpu,
-	images,
 	isCMSPreview,
-	price,
-	ram,
-	size,
-	state,
-	storage,
-	title,
-	type
+	...product
 }) => (
 	<React.Fragment>
-		{ !isCMSPreview && <Helmet title={`${title} - Het huidige aanbod tweedehands Macs, iMacs, en Macbooks`} /> }
+		{ !isCMSPreview && <Helmet title={`${product.title} - Het huidige aanbod tweedehands Macs, iMacs, en Macbooks`} /> }
 		<Main bg="#f6f6f6">
-			<PageHeader>
-				<h1>{ title }</h1>
+			<ProductHeader>
+				<h1>{ product.title }</h1>
 				<h2>
-					<s>&euro;&nbsp;{get(price, 'old')}</s> <strong>&euro;&nbsp;{get(price, 'new')}</strong>
+					<s>&euro;{parseFloat(product.price.old).toFixed(2)}</s>&nbsp;&nbsp;<strong>&euro;{parseFloat(product.price.new).toFixed(2)}</strong>
 				</h2>
 				<p>
-					<Link to="/contact">Koop deze {type} direct!</Link>
+					<Link to="/contact">Koop deze {product.type} direct!</Link>
 				</p>
-			</PageHeader>
-			<section>
-				<h2>Specificaties:</h2>
-				<table>
-					<tbody>
-						<tr>
-							<td>Type product</td>
-							<td>Apple {type}</td>
-						</tr>
-						<tr>
-							<td>Formaat</td>
-							<td>{size} inch</td>
-						</tr>
-						<tr>
-							<td>Staat</td>
-							<td>{state}</td>
-						</tr>
-						{ cpu && <tr>
-							<td>Processor</td>
-							<td>{get(cpu, 'name')} ({get(cpu, 'speed')} GHz)</td>
-						</tr> }
-						{ ram && <tr>
-							<td>Werkgeheugen</td>
-							<td>{get(ram, 'amount')}</td>
-						</tr> }
-						{ storage && <tr>
-							<td>Werkgeheugen</td>
-							<td>{get(storage, 'amount')} GB opslag</td>
-						</tr> }
-						{ gpu && <tr>
-							<td>Grafische kaart</td>
-							<td>{get(gpu, 'name')} ({get(gpu, 'memory')} MB geheugen)</td>
-						</tr> }
-					</tbody>
-				</table>
-			</section>
+			</ProductHeader>
+			{product.description && <ProductSection>{ product.description }</ProductSection> }
+			<ProductSpecsTable
+				product={product}
+				rows={[
+					{
+						label: 'Type product',
+						value: 'Apple ${type}'
+					},
+					{
+						label: 'Formaat',
+						value: '${size} inch'
+					},
+					{
+						label: 'Staat',
+						value: 'state'
+					},
+					{
+						label: 'Processor',
+						value: '${cpu.name} (${cpu.speed} GHz)'
+					},
+					{
+						label: 'Werkgeheugen',
+						value: '${ram} GB'
+					},
+					{
+						label: 'Opslag',
+						value: '${storage.amount} GB opslag (${storage.type})'
+					},
+					{
+						label: 'Grafische kaart',
+						value: '${gpu.name} (${gpu.memory} MB geheugen)'
+					}
+				]}
+			/>
+			<ProductFooter>
+				<h1><Link to="/contact">Klik hier voor een vraag of afspraak</Link></h1>
+			</ProductFooter>
 		</Main>
 	</React.Fragment>
 );
 
-export default ProductPageTemplate;
+const ProductPage = (props) => {
+	const { data } = props;
+	const { markdownRemark: product } = data;
+
+	return (
+		<ProductPageTemplate {...product.frontmatter} />
+	);
+};
+
+export { ProductPage, ProductPageTemplate };
+export default ProductPage;
+
+// eslint-disable-next-line no-undef
+export const pageQuery = graphql`
+	query ProductByID($id: String!) {
+		markdownRemark(id: { eq: $id }) {
+			id
+			html
+			frontmatter {
+				cpu {
+					name
+					speed
+				}
+				gpu {
+					name
+				}
+				price {
+					old
+					new
+				}
+				ram
+				size
+				state
+				storage {
+					amount
+					type
+				}
+				title
+				type
+			}
+		}
+	}
+`;
