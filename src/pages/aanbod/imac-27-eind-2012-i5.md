@@ -27,7 +27,8 @@ other:
   box: true
 state: Nieuwstaat
 images:
-  - image: /static/assets/images/placeholder.png
-  - image: /static/assets/images/placeholder.png
+  - image: /assets/images/placeholder.png
+  - image: /assets/images/placeholder.png
+  - image: /assets/images/placeholder.png
 ---
 
