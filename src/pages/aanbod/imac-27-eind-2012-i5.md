@@ -1,5 +1,6 @@
 ---
 templateKey: product-page
+date: '2018-04-18T00:00:00+02:00'
 title: iMac 27" EIND 2012 i5
 type: iMac
 size: 27
@@ -19,7 +20,14 @@ gpu:
 storage:
   amount: 1000
   type: Harddisk
+accessories:
+  mt: true
+  wk: true
+other:
+  box: true
 state: Nieuwstaat
-images: []
+images:
+  - image: /static/assets/images/placeholder.png
+  - image: /static/assets/images/placeholder.png
 ---
 
