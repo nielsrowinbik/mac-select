@@ -15,7 +15,7 @@ const SleekGridItem = styled(UnstyledSleekGridItem)`
 	background-image: url(${({ src }) => src});
 	background-position: center center;
 	background-size: cover;
-	height: ${({ isLarge }) => isLarge ? 400 : 200}px;
+	height: ${({ isLarge }) => isLarge ? 250 : 150}px;
 
 	& > div {
 		align-items: center;
@@ -29,6 +29,7 @@ const SleekGridItem = styled(UnstyledSleekGridItem)`
 		h2,
 		span {
 			color: #ffffff;
+			text-align: center;
 		}
 	}
 	
@@ -39,14 +40,26 @@ const SleekGridItem = styled(UnstyledSleekGridItem)`
 			color: ${({ theme }) => theme.text.link};
 		}
 	}
+
+	/* @media (min-width: 701px) {
+		height: ${({ isLarge }) => isLarge ? 300 : 175}px;
+	} */
+
+	@media (min-width: 901px) {
+		height: ${({ isLarge }) => isLarge ? 400 : 200}px;
+	}
 `;
 
 const SleekGrid = styled.section`
 	display: grid;
 	grid-column-gap: 2px;
 	grid-row-gap: 2px;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 	margin: 0 2px;
+
+	@media (min-width: 701px) {
+		grid-template-columns: 1fr 1fr;
+	}
 `;
 
 export { SleekGrid, SleekGridItem };
