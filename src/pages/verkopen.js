@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 
 const VerkopenPage = (props) => (
 	<React.Fragment>
-		<Helmet title="Verkopen" />
+		<Helmet title="Uw Mac verkopen" />
 		<Main>
 			<PageHeader>
 				<h1>Uw Mac verkopen</h1>

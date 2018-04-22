@@ -16,7 +16,7 @@ const HulpPage = (props) => {
 
 	return (
 		<React.Fragment>
-			<Helmet title="Hulp" />
+			<Helmet title="Hulp bij het kopen en verkopen van een tweedehands Mac" />
 			<Main>
 				<HulpHeader>
 					<h1>Mac Select helpt u</h1>
