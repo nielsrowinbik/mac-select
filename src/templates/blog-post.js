@@ -2,7 +2,7 @@ import React from 'react';
 import Main from '../components/Main';
 import moment from 'moment';
 import Helmet from 'react-helmet';
-import Blog, { BlogHeader, BlogContent } from '../components/Blog';
+import Blog, { BlogHeader, BlogBanner, BlogContent } from '../components/Blog';
 
 const BlogPostTemplate = ({
 	banner,
@@ -15,14 +15,12 @@ const BlogPostTemplate = ({
 }) => (
 	<React.Fragment>
 		{ !isCMSPreview && <Helmet title={`${title} - Blog`} /> }
-		<Main bg="#f6f6f6">
+		<Main bg="#f6f6f6" style={{ paddingTop: 0 }}>
+			<BlogBanner src={banner} />
 			<Blog>
 				<BlogHeader>
 					<span>{ moment(date).locale('nl').format('D MMMM, YYYY') }</span>
 					<h1>{ title }</h1>
-					<hr />
-					<p>{ description }</p>
-					<img src={banner} />
 				</BlogHeader>
 				{ isCMSPreview
 					? <BlogContent>{ content }</BlogContent>

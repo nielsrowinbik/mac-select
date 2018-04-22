@@ -7,7 +7,8 @@ import moment from 'moment';
 const BlogGrid = styled.section`
 	${container}
 	display: grid;
-	grid-row-gap: 10px;
+	grid-row-gap: 20px;
+	max-width: 800px;
 `;
 
 const UnstyledBlogGridItem = ({ date, title, src, ...props }) => (
@@ -25,18 +26,24 @@ const BlogGridItem = styled(UnstyledBlogGridItem)`
 	color: inherit;
 	display: flex;
 	flex-wrap: nowrap;
-	height: 400px;
+	height: 300px;
 
 	:hover {
 		text-decoration: none;
 	}
 
+	&:nth-child(odd) > div {
+		background-color: #222222;
+		color: #ffffff;
+	}
+
 	& > div {
-		flex: 0 0 250px;
-		padding: 34px 36px 0;
+		flex: 0 0 200px;
+		padding: 20px 40px 20px 20px;
 
 		span {
 			color: ${({ theme }) => theme.text.link};
+			font-size: 0.9rem;
 			font-weight: 400;
 			text-transform: uppercase;
 		}

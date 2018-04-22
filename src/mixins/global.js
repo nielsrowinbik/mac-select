@@ -59,10 +59,12 @@ export default css`
 	h2 {
 		font-size: 1.5rem;
 		font-weight: 300;
+    	margin-bottom: 1rem;
 	}
 
 	h3 {
-		font-size: 1.3rem;
+		font-size: 1.2rem;
 		font-weight: 400;
+    	margin-bottom: 0.8rem;
 	}
 `;

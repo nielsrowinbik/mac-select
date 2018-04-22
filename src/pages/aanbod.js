@@ -36,26 +36,41 @@ const AanbodPage = (props) => {
 					<Link to="/hulp">Help me met kiezen</Link>
 				</AanbodHeader>
 				<ProductGrid>
-					{ map(products, ({ node: { childMarkdownRemark: product } }) => (
-						<ProductGridItem
-							key={get(product, 'fields.slug')}
-							to={`/aanbod${get(product, 'fields.slug')}`}
-						>
-							<h2>{get(product, 'frontmatter.title')}</h2>
-							<div>
+					{ map(products, ({ node: { childMarkdownRemark } }) => {
+						const { fields, frontmatter: product } = childMarkdownRemark;
+						const { slug } = fields;
+						const {
+							cpu,
+							gpu,
+							images,
+							other,
+							price,
+							ram,
+							storage,
+							title
+						} = product;
+
+						return (
+							<ProductGridItem
+								key={slug}
+								to={`/aanbod${slug}`}
+							>
+								<h2>{title}</h2>
 								<div>
-									<h3><s>&euro;{get(product, 'frontmatter.price.old')}</s> <strong>&euro;{get(product, 'frontmatter.price.new')}</strong></h3>
-									{ get(product, 'frontmatter.cpu') && <p>{get(product, 'frontmatter.cpu.name')} ({get(product, 'frontmatter.cpu.speed')} GHz)</p> }
-									{ get(product, 'frontmatter.ram') && <p>{get(product, 'frontmatter.ram')} GB werkgeheugen</p> }
-									{ get(product, 'frontmatter.storage') && <p>{get(product, 'frontmatter.storage.amount')} GB opslag ({get(product, 'frontmatter.storage.type')})</p> }
-									{ get(product, 'frontmatter.gpu') && <p>{get(product, 'frontmatter.gpu.name')}</p> }
-									{ get(product, 'frontmatter.other.box') && <p>In originele doos</p> }
-									<p>Meer informatie</p>
+									<div>
+										<h3><s>&euro;{parseFloat(price.old).toFixed(2)}</s> <strong>&euro;{parseFloat(price.new).toFixed(2)}</strong></h3>
+										{ cpu && <p>{cpu.name} ({cpu.speed} GHz)</p> }
+										{ ram && <p>{ram} GB werkgeheugen</p> }
+										{ storage && <p>{storage.amount} GB opslag ({storage.type})</p> }
+										{ gpu && <p>{gpu.name}</p> }
+										{ (other && other.box) && <p>In originele doos</p> }
+										<p>Meer informatie</p>
+									</div>
+									<img src={get(images, '[0].image')} />
 								</div>
-								<img src={get(product, 'frontmatter.images[0].image')} />
-							</div>
-						</ProductGridItem>
-					)) }
+							</ProductGridItem>
+						);
+					}) }
 				</ProductGrid>
 			</Main>
 		</React.Fragment>

@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+const BlogBanner = styled.img`
+	height: 250px;
+	object-fit: cover;
+	padding-bottom: 56px;
+	width: 100%;
+`;
+
 const BlogHeader = styled.header`
 	span {
 		font-size: 0.9rem;
@@ -9,23 +16,15 @@ const BlogHeader = styled.header`
 	}
 
 	h1 {
-		color: #000000;
-		font-size: 2.7rem;
-		font-weight: 600;
-	}
-
-	hr {
-		background-color: #000000;
-		border: none;
-		height: 1px;
-		margin: 40px 0;
-		opacity: 0.2;
+		margin-bottom: 4rem;
+		text-align: center;
 	}
 
 	p {
 		font-size: 1.5rem;
 		line-height: 1.8rem;
 		margin-bottom: 40px;
+		text-align: justify;
 	}
 `;
 
@@ -35,6 +34,11 @@ const BlogContent = styled.main`
 		font-size: 1.05rem;
 		font-weight: 500;
 		line-height: 1.7rem;
+	}
+
+	& > h2 {
+		margin-top: 2rem;
+		margin-bottom: 2rem;
 	}
 `;
 
@@ -48,5 +52,5 @@ const BlogContainer = styled.article`
 	}
 `;
 
-export { BlogContainer as Blog, BlogContent, BlogHeader };
+export { BlogContainer as Blog, BlogBanner, BlogContent, BlogHeader };
 export default BlogContainer;
