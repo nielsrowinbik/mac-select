@@ -45,6 +45,7 @@ const BlogContent = styled.main`
 const BlogContainer = styled.article`
 	margin: 0 auto;
 	max-width: 550px;
+	padding: 0 20px;
 
 	img {
 		margin: 0 -75px;
