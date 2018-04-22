@@ -12,11 +12,12 @@ injectGlobal`${global}`;
 class TemplateWrapper extends Component {
 	state = {
 		isOpen: false,
-		toggleOpen: () => this.setState({ isOpen: !this.state.isOpen })
+		toggleOpen: (val) => (event) => this.setState({ isOpen: val == undefined ? !this.state.isOpen : val })
 	}
 
 	render = () => {
 		const { children } = this.props;
+		const { isOpen, toggleOpen } = this.state;
 
 		return (
 			<ThemeProvider {...theme}>
@@ -25,9 +26,9 @@ class TemplateWrapper extends Component {
 						title="Mac Select - Het adres voor het kopen en verkopen van een tweedehands Mac, iMac, of Macbook"
 						titleTemplate="%s - Mac Select"
 					/>
-					<Navigation {...this.state}>
+					<Navigation isOpen={isOpen} toggleOpen={toggleOpen()}>
 						<Link exact to="/"><h1>Mac Select</h1></Link>
-						<nav onClick={this.state.toggleOpen}>
+						<nav onClick={toggleOpen(false)}>
 							<Link activeStyle={{}} to="/aanbod">Aanbod</Link>
 							<Link activeStyle={{}} to="/verkopen">Verkopen</Link>
 							<Link activeStyle={{}} to="/hulp">Hulp</Link>
