@@ -11,18 +11,26 @@ const UnstyledHero = ({ children, src, ...props }) => (
 const Hero = styled(UnstyledHero)`
 	${container}
 	display: flex;
-	flex-direction: ${({ rtl }) => rtl ? 'row-reverse' : 'row'};
+	flex-direction: ${({ rtl }) => rtl ? 'column-reverse' : 'column'};
 	align-items: center;
 	padding: 56px 0;
 
 	img {
 		object-fit: contain;
-		max-width: 55%;
+		max-width: 85%;
 		padding: 24px;
 	}
 
 	div {
 		padding: 24px;
+	}
+
+	@media (min-width: 701px) {
+		flex-direction: ${({ rtl }) => rtl ? 'row-reverse' : 'row'};
+
+		img {
+			max-width: 55%;
+		}
 	}
 `;
 
