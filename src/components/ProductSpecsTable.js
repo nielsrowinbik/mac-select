@@ -7,12 +7,14 @@ const UnstyledProductSpecsTable = ({ product, rows, ...props }) => (
 	<section {...props}>
 		<h2>Specificaties:</h2>
 		<table>
-			{ map(rows, ({ label, value }) => (
-				<tr>
-					<td>{ label }</td>
-					<td>{ get(product, value) || template(value)(product) }</td>
-				</tr>
-			)) }
+			<tbody>
+				{ map(rows, ({ label, value }) => (
+					<tr>
+						<td>{ label }</td>
+						<td>{ get(product, value) || template(value)(product) }</td>
+					</tr>
+				)) }
+			</tbody>
 		</table>
 	</section>
 );
@@ -24,7 +26,7 @@ const ProductSpecsTable = styled(UnstyledProductSpecsTable)`
 		border: 1px solid #eceef0;
 		border-collapse: collapse;
 
-		& > tr {
+		& > tbody > tr {
 
 			:nth-child(odd) {
 				background-color: #eceef0;
