@@ -30,7 +30,6 @@ class TemplateWrapper extends Component {
 						<Link exact to="/"><h1>Mac Select</h1></Link>
 						<nav onClick={toggleOpen(false)}>
 							<Link activeStyle={{}} to="/aanbod">Aanbod</Link>
-							<Link activeStyle={{}} to="/verkopen">Verkopen</Link>
 							<Link activeStyle={{}} to="/hulp">Hulp</Link>
 							<Link activeStyle={{}} to="/contact">Contact</Link>
 							<Link activeStyle={{}} to="/blog">Blog</Link>
