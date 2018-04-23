@@ -1,0 +1,54 @@
+{
+  "size": "19",
+  "templateKey": "product-page",
+  "release": {
+    "prefix": "Eind",
+    "year": "2012"
+  },
+  "cpu": {
+    "name": "i5",
+    "speed": "3.2"
+  },
+  "price": {
+    "old": "2099",
+    "new": "1099"
+  },
+  "gpu": {
+    "name": "NVIDIA GeForce 675X",
+    "memory": "1024"
+  },
+  "date": "2018-04-23T15:48:23+02:00",
+  "other": {
+    "box": true
+  },
+  "accessories": {
+    "mm": true,
+    "wk": true
+  },
+  "state": "Nieuwstaat",
+  "spotlight": true,
+  "title": "iMac 27\" EIND 2012 i5",
+  "images": [
+    {
+      "image": "/assets/images/1513256782960.jpg"
+    },
+    {
+      "image": "/assets/images/1511432906088.jpg"
+    },
+    {
+      "image": "/assets/images/1511432907829.jpg"
+    },
+    {
+      "image": "/assets/images/1511432909365.jpg"
+    },
+    {
+      "image": "/assets/images/1511432908545.jpg"
+    }
+  ],
+  "type": "iMac",
+  "storage": {
+    "amount": "1000",
+    "type": "Harddisk"
+  },
+  "ram": "8"
+}
