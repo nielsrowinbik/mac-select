@@ -7,6 +7,9 @@ module.exports = {
 	plugins: [
 		'gatsby-plugin-react-helmet',
 		'gatsby-plugin-styled-components',
+		'gatsby-transformer-remark',
+		'gatsby-transformer-json',
+		'gatsby-plugin-sitemap',
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
@@ -20,10 +23,6 @@ module.exports = {
 				path: path.resolve(__dirname, 'src/pages/aanbod'),
 				name: 'aanbod'
 			}
-		},
-		{
-			resolve: 'gatsby-transformer-remark',
-			options: { plugins: [] }
 		},
 		{
 			resolve: 'gatsby-plugin-netlify-cms',
