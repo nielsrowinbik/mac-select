@@ -102,39 +102,39 @@ export { ProductPage, ProductPageTemplate };
 export default ProductPage;
 
 // eslint-disable-next-line no-undef
-export const pageQuery = graphql`
-	query ProductByID($id: String!) {
-		markdownRemark(id: { eq: $id }) {
-			id
-			html
-			frontmatter {
-				cpu {
-					name
-					speed
-				}
-				gpu {
-					name
-				}
-				images {
-					image
-				}
-				other {
-					box
-				}
-				price {
-					old
-					new
-				}
-				ram
-				size
-				state
-				storage {
-					amount
-					type
-				}
-				title
-				type
-			}
-		}
-	}
-`;
+// export const pageQuery = graphql`
+// 	query ProductByID($id: String!) {
+// 		markdownRemark(id: { eq: $id }) {
+// 			id
+// 			html
+// 			frontmatter {
+// 				cpu {
+// 					name
+// 					speed
+// 				}
+// 				gpu {
+// 					name
+// 				}
+// 				images {
+// 					image
+// 				}
+// 				other {
+// 					box
+// 				}
+// 				price {
+// 					old
+// 					new
+// 				}
+// 				ram
+// 				size
+// 				state
+// 				storage {
+// 					amount
+// 					type
+// 				}
+// 				title
+// 				type
+// 			}
+// 		}
+// 	}
+// `;
