@@ -80,44 +80,44 @@ const AanbodPage = (props) => {
 export default AanbodPage;
 
 // eslint-disable-next-line no-undef
-export const pageQuery = graphql`
-	query AanbodQuery {
-		allFile(filter: { sourceInstanceName: { eq: "aanbod" } name: { ne:".gitinclude" } }) {
-			edges {
-				node {
-					childMarkdownRemark {
-						id
-						fields {
-							slug
-						}
-						frontmatter {
-							cpu {
-								name
-								speed
-							}
-							gpu {
-								name
-							}
-							images {
-								image
-							}
-							other {
-								box
-							}
-							price {
-								old
-								new
-							}
-							ram
-							storage {
-								amount
-								type
-							}
-							title
-						}
-					}
-				}
-			}
-		}
-	}
-`;
+// export const pageQuery = graphql`
+// 	query AanbodQuery {
+// 		allFile(filter: { sourceInstanceName: { eq: "aanbod" } name: { ne:".gitinclude" } }) {
+// 			edges {
+// 				node {
+// 					childMarkdownRemark {
+// 						id
+// 						fields {
+// 							slug
+// 						}
+// 						frontmatter {
+// 							cpu {
+// 								name
+// 								speed
+// 							}
+// 							gpu {
+// 								name
+// 							}
+// 							images {
+// 								image
+// 							}
+// 							other {
+// 								box
+// 							}
+// 							price {
+// 								old
+// 								new
+// 							}
+// 							ram
+// 							storage {
+// 								amount
+// 								type
+// 							}
+// 							title
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// `;
