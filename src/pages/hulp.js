@@ -108,13 +108,13 @@ const HulpPage = (props) => {
 							<h3>Wat is mijn Mac waard?</h3>
 							<p>
 								Wanneer u uw tweedehands Mac gaat verkopen, wilt u natuurlijk weten wat uw tweedehands
-								Mac waard is. Dit kunt u binnen een minuut ontdekken door de <Link to="/verkopen">prijschecker
-								van Mac Select</Link> te gebruiken. U vult heel gemakkelijk de specificaties in van uw
-								tweedehands Mac en wanneer u akkoord gaat met de geboden waarde kunt u kiezen om uw tweedehands
-								Mac te verkopen. Mac Select zal contact met u opnemen voor een afspraak om de Mac op te halen.
-								Tijdens het ophalen ontvangt u de prijs voor uw Mac. Op deze manier heeft u enkel luttele minuten
-								werk aan het verkopen van uw tweedehands Mac. Eenvoud, transparantie en snelheid is de kern van
-								Mac Select!
+								Mac waard is. Door <Link to="/contact">contact</Link> op te nemen met Mac Select weet u
+								dt het snelst. Vermeld de specificaties van uw apparaat in het bericht en Mac Select doet u
+								een bod. Wanneer u akkoord gaat met de geboden waarde kunt u kiezen om uw tweedehands
+								Mac te verkopen. Mac Select neemt dan contact met u op voor het maken van een afspraak om
+								de Mac op te halen. Tijdens het ophalen ontvangt u de afgesproken prijs voor uw Mac.
+								Op deze manier heeft u enkel luttele minuten werk aan het verkopen van uw tweedehands Mac.
+								Eenvoud, transparantie en snelheid is de kern van Mac Select!
 							</p>
 						</QASectionContent>
 					</QASectionHeader>
