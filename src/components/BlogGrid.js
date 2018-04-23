@@ -8,6 +8,7 @@ const BlogGrid = styled.section`
 	${container}
 	display: grid;
 	grid-row-gap: 20px;
+	grid-template-columns: 1fr;
 	max-width: 800px;
 `;
 
@@ -25,6 +26,7 @@ const BlogGridItem = styled(UnstyledBlogGridItem)`
 	background-color: #ffffff;
 	color: inherit;
 	display: flex;
+	flex-direction: column-reverse;
 	flex-wrap: nowrap;
 	height: 300px;
 
@@ -38,7 +40,8 @@ const BlogGridItem = styled(UnstyledBlogGridItem)`
 	}
 
 	& > div {
-		flex: 0 0 200px;
+		flex: auto;
+		height: 150px;
 		padding: 20px 40px 20px 20px;
 
 		span {
@@ -55,8 +58,27 @@ const BlogGridItem = styled(UnstyledBlogGridItem)`
 	}
 
 	& > img {
+		height: 150px;
 		width: 100%;
 		object-fit: cover;
+	}
+
+	@media (min-width: 701px) {
+		display: block;
+		white-space: break-none;
+
+		& > div {
+			display: inline-block;
+			float: left;
+			height: 100%;
+			width: 200px;
+		}
+
+		& > img {
+			display: inline-block;
+			height: 100%;
+			width: calc(100% - 200px);
+		}
 	}
 `;
 
