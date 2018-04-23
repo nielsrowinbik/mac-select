@@ -51,6 +51,9 @@ collections:
       - name: date
         label: Publish date
         widget: datetime
+      - name: spotlight
+        label: Is spotlight
+        widget: boolean
       - name: title
         label: Title
         widget: string
