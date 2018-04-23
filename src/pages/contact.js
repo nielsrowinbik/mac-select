@@ -24,14 +24,14 @@ const ContactPage = (props) => (
 					<h2>Telefonisch</h2>
 					<p>
 						U kunt Mac Select op werkdagen bereiken door te bellen
-						naar <a href="tel:+31647028625">06&nbsp;47&nbsp;02&nbsp;86&nbsp;25</a>
+						naar <span>06&nbsp;47&nbsp;02&nbsp;86&nbsp;25</span>
 					</p>
 				</ContactGridItem>
 				<ContactGridItem href="mailto:info@mac-select.nl">
 					<img src="/assets/images/email-icon.png" />
 					<h2>E-mail</h2>
 					<p>
-						Een e-mail sturen naar <a href="mailto:info@mac-select.nl">info@mac-select.nl</a> levert
+						Een e-mail sturen naar <span>info@mac-select.nl</span> levert
 						u antwoord op binnen een werkdag
 					</p>
 				</ContactGridItem>
@@ -67,8 +67,8 @@ const ContactPage = (props) => (
 					<img src="/assets/images/location-icon.png" />
 					<h2>Kom langs</h2>
 					<p>
-						Mac Select is gevestigd aan de <a href="https://goo.gl/maps/nj6eWzxXzN22">Oudedijk
-						te Rotterdam</a>. Alleen op afspraak.
+						Mac Select is gevestigd aan de <span>Oudedijk
+						te Rotterdam</span>. Alleen op afspraak.
 					</p>
 				</ContactGridItem>
 				<ContactGridItem>
