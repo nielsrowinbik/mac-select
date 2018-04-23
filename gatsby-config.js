@@ -2,7 +2,8 @@ const path = require('path');
 
 module.exports = {
 	siteMetadata: {
-		title: 'Mac Select'
+		title: 'Mac Select',
+		siteUrl: 'https://www.mac-select.nl'
 	},
 	plugins: [
 		'gatsby-plugin-react-helmet',
