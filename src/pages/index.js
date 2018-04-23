@@ -58,27 +58,27 @@ const Home = (props) => {
 export default Home;
 
 // eslint-disable-next-line no-undef
-export const pageQuery = graphql`
-	query IndexQuery {
-		allFile(filter: { name: { ne:".gitinclude" } }) {
-			edges {
-				node {
-					sourceInstanceName
-					childMarkdownRemark {
-						id
-						fields {
-							slug
-						}
-						frontmatter {
-							banner
-							title
-							images {
-								image
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-`;
+// export const pageQuery = graphql`
+// 	query IndexQuery {
+// 		allFile(filter: { name: { ne:".gitinclude" } }) {
+// 			edges {
+// 				node {
+// 					sourceInstanceName
+// 					childMarkdownRemark {
+// 						id
+// 						fields {
+// 							slug
+// 						}
+// 						frontmatter {
+// 							banner
+// 							title
+// 							images {
+// 								image
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// `;
