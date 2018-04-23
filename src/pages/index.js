@@ -7,8 +7,8 @@ import SleekGrid, { SleekGridItem } from '../components/SleekGrid';
 import { isBlogPost, isProduct } from '../helpers';
 
 const Home = (props) => {
-	const { data } = props;
-	const { allFile } = data;
+	const { data = {} } = props;
+	const { allFile = {} } = data;
 	const { edges } = allFile;
 
 	const posts = filter(edges, isBlogPost);
