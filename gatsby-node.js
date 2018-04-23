@@ -1,5 +1,5 @@
 const { createFilePath } = require('gatsby-source-filesystem');
-const { get, trimEnd } = require('lodash');
+const { get, trim } = require('lodash');
 const path = require('path');
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
@@ -20,6 +20,13 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 								templateKey
 							}
 						}
+						childAanbodJson {
+							id
+							fields {
+								slug
+							}
+							templateKey
+						}
 					}
 				}
 			}
@@ -35,28 +42,32 @@ const handler = (createPage) => (result) => {
 
 	const edges = get(result, 'data.allFile.edges');
 
-	edges.forEach((edge) => {
+	edges.forEach((edge, i) => {
 		const { node } = edge;
-		const { sourceInstanceName, childMarkdownRemark } = node;
-		const { id, fields, frontmatter } = childMarkdownRemark;
+		const { childAanbodJson, childMarkdownRemark, sourceInstanceName } = node;
+
+		const id = get(childMarkdownRemark || childAanbodJson, 'id');
+		const templateKey = get(childMarkdownRemark, 'frontmatter.templateKey') || childAanbodJson.templateKey;
+		const slug = get(childMarkdownRemark || childAanbodJson, 'fields.slug');
 
 		createPage({
-			path: `/${sourceInstanceName}${fields.slug}`,
-			component: path.resolve(`src/templates/${frontmatter.templateKey}.js`),
+			path: `/${sourceInstanceName}/${slug}`,
+			component: path.resolve(`src/templates/${templateKey}.js`),
 			context: { id }
 		});
 	});
 };
 
 exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
+	const types = ['AanbodJson', 'MarkdownRemark'];
 	const { createNodeField } = boundActionCreators;
 
-	if (node.internal.type === `MarkdownRemark`) {
-		const value = createFilePath({ node, getNode });
+	if (types.includes(node.internal.type)) {
+		const value = createFilePath({ node, getNode, trailingSlash: false });
 		createNodeField({
 			name: `slug`,
 			node,
-			value: trimEnd(value, '/')
+			value: trim(value, '/')
 		});
 	}
 };

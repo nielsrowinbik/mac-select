@@ -7,9 +7,9 @@ import PageHeader from '../components/PageHeader';
 
 const BlogPage = (props) => {
 	const { data } = props;
-	const { allFile } = data;
+	const { allMarkdownRemark } = data;
 
-	if (!allFile) return (
+	if (!allMarkdownRemark) return (
 		<React.Fragment>
 			<Helmet title="Blog" />
 			<Main bg="#f6f6f6">
@@ -20,19 +20,19 @@ const BlogPage = (props) => {
 		</React.Fragment>
 	);
 
-	const { edges: posts } = allFile;
+	const { edges: posts } = allMarkdownRemark;
 
 	return (
 		<React.Fragment>
 			<Helmet title="Blog" />
 			<Main bg="#f6f6f6">
 				<BlogGrid>
-					{ map(posts, ({ node: { childMarkdownRemark: post } }) => (
+					{ map(posts, ({ node: post }) => (
 						<BlogGridItem
 							date={get(post, 'frontmatter.date')}
 							src={get(post, 'frontmatter.banner')}
 							title={get(post, 'frontmatter.title')}
-							to={`/blog${get(post, 'fields.slug')}`}
+							to={`/blog/${get(post, 'fields.slug')}`}
 							key={get(post, 'id')}
 						/>
 					))}
@@ -47,19 +47,17 @@ export default BlogPage;
 // eslint-disable-next-line no-undef
 export const pageQuery = graphql`
 	query BlogQuery {
-		allFile(filter: { sourceInstanceName: { eq: "blog" } name: { ne:".gitinclude" } }) {
+		allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
 			edges {
 				node {
-					childMarkdownRemark {
-						id
-						fields {
-							slug
-						}
-						frontmatter {
-							banner
-							date
-							title
-						}
+					id
+					fields {
+						slug
+					}
+					frontmatter {
+						banner
+						date
+						title
 					}
 				}
 			}

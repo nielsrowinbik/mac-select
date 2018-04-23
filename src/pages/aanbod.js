@@ -36,8 +36,8 @@ const AanbodPage = (props) => {
 					<Link to="/hulp">Help me met kiezen</Link>
 				</AanbodHeader>
 				<ProductGrid>
-					{ map(products, ({ node: { childMarkdownRemark } }) => {
-						const { fields, frontmatter: product } = childMarkdownRemark;
+					{ map(products, ({ node: { childAanbodJson } }) => {
+						const { fields, ...product } = childAanbodJson;
 						const { slug } = fields;
 						const {
 							cpu,
@@ -53,7 +53,7 @@ const AanbodPage = (props) => {
 						return (
 							<ProductGridItem
 								key={slug}
-								to={`/aanbod${slug}`}
+								to={`/aanbod/${slug}`}
 							>
 								<h2>{title}</h2>
 								<div>
@@ -80,44 +80,41 @@ const AanbodPage = (props) => {
 export default AanbodPage;
 
 // eslint-disable-next-line no-undef
-// export const pageQuery = graphql`
-// 	query AanbodQuery {
-// 		allFile(filter: { sourceInstanceName: { eq: "aanbod" } name: { ne:".gitinclude" } }) {
-// 			edges {
-// 				node {
-// 					childMarkdownRemark {
-// 						id
-// 						fields {
-// 							slug
-// 						}
-// 						frontmatter {
-// 							cpu {
-// 								name
-// 								speed
-// 							}
-// 							gpu {
-// 								name
-// 							}
-// 							images {
-// 								image
-// 							}
-// 							other {
-// 								box
-// 							}
-// 							price {
-// 								old
-// 								new
-// 							}
-// 							ram
-// 							storage {
-// 								amount
-// 								type
-// 							}
-// 							title
-// 						}
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// `;
+export const pageQuery = graphql`
+	query AanbodQuery {
+		allFile(filter: { sourceInstanceName: { eq: "aanbod" } name: { ne:".gitinclude" } }) {
+			edges {
+				node {
+					childAanbodJson {
+						fields {
+							slug
+						}
+						cpu {
+							name
+							speed
+						}
+						gpu {
+							name
+						}
+						images {
+							image
+						}
+						other {
+							box
+						}
+						price {
+							old
+							new
+						}
+						ram
+						storage {
+							amount
+							type
+						}
+						title
+					}
+				}
+			}
+		}
+	}
+`;

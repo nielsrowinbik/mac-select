@@ -5,6 +5,7 @@ import Link from 'gatsby-link';
 import PageHeader from '../components/PageHeader';
 import ProductSpecsTable from '../components/ProductSpecsTable';
 import { container } from '../mixins';
+import { omit } from 'lodash';
 import styled from 'styled-components';
 
 const ProductHeader = PageHeader.extend`
@@ -89,11 +90,12 @@ const ProductPageTemplate = ({
 );
 
 const ProductPage = (props) => {
-	const { data = {} } = props;
-	const { markdownRemark: product } = data;
+	const { data } = props;
+	const { aanbodJson } = data;
+	const product = omit(aanbodJson, 'fields');
 
 	return (
-		<ProductPageTemplate {...product.frontmatter} />
+		<ProductPageTemplate {...product} />
 	);
 };
 
@@ -101,39 +103,35 @@ export { ProductPage, ProductPageTemplate };
 export default ProductPage;
 
 // eslint-disable-next-line no-undef
-// export const pageQuery = graphql`
-// 	query ProductByID($id: String!) {
-// 		markdownRemark(id: { eq: $id }) {
-// 			id
-// 			html
-// 			frontmatter {
-// 				cpu {
-// 					name
-// 					speed
-// 				}
-// 				gpu {
-// 					name
-// 				}
-// 				images {
-// 					image
-// 				}
-// 				other {
-// 					box
-// 				}
-// 				price {
-// 					old
-// 					new
-// 				}
-// 				ram
-// 				size
-// 				state
-// 				storage {
-// 					amount
-// 					type
-// 				}
-// 				title
-// 				type
-// 			}
-// 		}
-// 	}
-// `;
+export const pageQuery = graphql`
+	query ProductByID($id: String!) {
+		aanbodJson(id: { eq: $id }) {
+			cpu {
+				name
+				speed
+			}
+			gpu {
+				name
+			}
+			images {
+				image
+			}
+			other {
+				box
+			}
+			price {
+				old
+				new
+			}
+			ram
+			size
+			state
+			storage {
+				amount
+				type
+			}
+			title
+			type
+		}
+	}
+`;
