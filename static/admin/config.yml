@@ -26,9 +26,6 @@ collections:
       - name: date
         label: Publish date
         widget: datetime
-      - name: description
-        label: Description
-        widget: text
       - name: banner
         label: Banner
         widget: image
@@ -138,6 +135,7 @@ collections:
       - name: accessories
         label: Accessoires
         widget: object
+        required: false
         fields:
           - name: mm
             label: Magic Mouse
@@ -158,6 +156,7 @@ collections:
       - name: other
         label: Overig
         widget: object
+        required: false
         fields:
           - name: box
             label: Originele doos aanwezig
