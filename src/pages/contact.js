@@ -35,7 +35,7 @@ const ContactPage = (props) => (
 						u antwoord op binnen een werkdag
 					</p>
 				</ContactGridItem>
-				<ContactGridItem style={{ gridColumnEnd: 'span 2' }}>
+				<ContactGridItem isWide>
 					<h2>Contactformulier</h2>
 					<p>
 						Stuur direct een bericht naar Mac Select via onderstaand formulier.<br />

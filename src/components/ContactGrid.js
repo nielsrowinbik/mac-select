@@ -37,6 +37,10 @@ const ContactGridItem = styled(UnstyledContactGridItem)`
 			}
 		}
 	}
+
+	@media (min-width: 701px) {
+		${({ isWide }) => isWide && `grid-column-end: span 2;`}
+	}
 `;
 
 const ContactGrid = styled.section`
@@ -44,8 +48,12 @@ const ContactGrid = styled.section`
 	display: grid;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 	max-width: 700px;
+
+	@media (min-width: 701px) {
+		grid-template-columns: 1fr 1fr;
+	}
 `;
 
 export { ContactGrid, ContactGridItem };
