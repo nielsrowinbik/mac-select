@@ -12,6 +12,8 @@ collections:
     label_singular: Post
     folder: src/pages/blog
     create: true
+    extension: md
+    format: frontmatter
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - name: templateKey
@@ -38,6 +40,8 @@ collections:
     label_singular: Product
     folder: src/pages/aanbod
     create: true
+    extension: json
+    format: json
     slug: "{{slug}}"
     fields:
       - name: templateKey
