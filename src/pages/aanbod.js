@@ -11,7 +11,7 @@ const AanbodHeader = PageHeader.extend`
 `;
 
 const AanbodPage = (props) => {
-	const { data } = props;
+	const { data = {} } = props;
 	const { allFile } = data;
 
 	if (!allFile) return (

@@ -6,7 +6,6 @@ import PageHeader from '../components/PageHeader';
 import ProductSpecsTable from '../components/ProductSpecsTable';
 import { container } from '../mixins';
 import styled from 'styled-components';
-import { map } from 'lodash';
 
 const ProductHeader = PageHeader.extend`
 	padding-bottom: 56px;
@@ -90,7 +89,7 @@ const ProductPageTemplate = ({
 );
 
 const ProductPage = (props) => {
-	const { data } = props;
+	const { data = {} } = props;
 	const { markdownRemark: product } = data;
 
 	return (
