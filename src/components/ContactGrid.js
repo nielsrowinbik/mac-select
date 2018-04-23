@@ -38,6 +38,14 @@ const ContactGridItem = styled(UnstyledContactGridItem)`
 		}
 	}
 
+	& > p > span {
+		color: ${({ theme }) => theme.text.link};
+
+		:hover {
+			text-decoration: underline;
+		}
+	}
+
 	@media (min-width: 701px) {
 		${({ isWide }) => isWide && `grid-column-end: span 2;`}
 	}
