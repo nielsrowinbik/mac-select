@@ -24,6 +24,7 @@ const SleekGridItem = styled(UnstyledSleekGridItem)`
 		flex-direction: column;
 		height: 100%;
 		justify-content: center;
+		padding: 16px;
 		width: 100%;
 
 		h2,
