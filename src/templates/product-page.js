@@ -22,7 +22,7 @@ const ProductSection = styled.section`
 `;
 
 const SliderSection = styled.section`
-	padding-bottom: 56px;
+	padding-bottom: 36px;
 `;
 
 const ProductPageTemplate = ({
