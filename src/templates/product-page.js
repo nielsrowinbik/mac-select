@@ -5,8 +5,9 @@ import Link from 'gatsby-link';
 import PageHeader from '../components/PageHeader';
 import ProductSpecsTable from '../components/ProductSpecsTable';
 import { container } from '../mixins';
-import { omit } from 'lodash';
+import { map, omit } from 'lodash';
 import styled from 'styled-components';
+import Slider from '../components/Slider';
 
 const ProductHeader = PageHeader.extend`
 	padding-bottom: 56px;
@@ -18,6 +19,10 @@ const ProductFooter = PageHeader.extend`
 
 const ProductSection = styled.section`
 	${container}
+`;
+
+const SliderSection = styled.section`
+	padding-bottom: 56px;
 `;
 
 const ProductPageTemplate = ({
@@ -36,6 +41,9 @@ const ProductPageTemplate = ({
 					<Link to="/contact">Koop deze {product.type} direct!</Link>
 				</p>
 			</ProductHeader>
+			<SliderSection>
+				<Slider images={map(product.images, ({ image }) => image)} />
+			</SliderSection>
 			{product.description && <ProductSection>{ product.description }</ProductSection> }
 			<ProductSpecsTable
 				product={product}
