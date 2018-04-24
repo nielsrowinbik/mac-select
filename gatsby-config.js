@@ -50,7 +50,8 @@ module.exports = {
 				start_url: '/',
 				background_color: '#ffffff',
 				theme_color: '#ffffff',
-				display: 'standalone'
+				display: 'standalone',
+				icon: 'src/icon.png'
 			}
 		},
 		'gatsby-plugin-offline'
