@@ -13,6 +13,7 @@ module.exports = {
 		'gatsby-plugin-sitemap',
 		'gatsby-plugin-catch-links',
 		'gatsby-plugin-lodash',
+		'gatsby-plugin-offline',
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
