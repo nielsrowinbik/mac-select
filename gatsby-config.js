@@ -33,6 +33,15 @@ module.exports = {
 			options: {
 				modulePath: path.resolve(__dirname, 'src/cms/cms.js')
 			}
+		},
+		{
+			resolve: `gatsby-plugin-google-analytics`,
+			options: {
+				trackingId: 'UA-76226052-1',
+				head: false,
+				anonymize: true,
+				respectDNT: true
+			}
 		}
 	]
 };
