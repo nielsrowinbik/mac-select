@@ -20,13 +20,13 @@ const ProductGridItem = styled(Link)`
 
 	& > div {
 		display: flex;
+		flex-direction: column-reverse;
 		flex-wrap: nowrap;
 		justify-content: space-between;
 		text-decoration: none;
 
 		& > img {
-			height: 220px;
-			max-width: 300px;
+			height: 250px;
 			object-fit: contain;
 		}
 
@@ -46,6 +46,15 @@ const ProductGridItem = styled(Link)`
 		}
 	}
 
+	@media (min-width: 701px) {
+		& > div {
+			flex-direction: row;
+
+			& > img {
+				max-width: 300px;
+			}
+		}
+	}
 `;
 
 const ProductGrid = styled.div`
