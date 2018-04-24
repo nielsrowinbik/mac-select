@@ -6,18 +6,20 @@ import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
 import { injectGlobal, ThemeProvider } from 'styled-components';
 import { global, theme } from '../mixins';
+import { find, get } from 'lodash';
 
 injectGlobal`${global}`;
 
 class TemplateWrapper extends Component {
 	state = {
 		isOpen: false,
-		toggleOpen: (val) => (event) => this.setState({ isOpen: val == undefined ? !this.state.isOpen : val })
+		toggleOpen: (val) => (event) => this.setState({ isOpen: val === undefined ? !this.state.isOpen : val })
 	}
 
 	render = () => {
-		const { children } = this.props;
+		const { children, data } = this.props;
 		const { isOpen, toggleOpen } = this.state;
+		const spotlight = get(find(get(data, 'allAanbodJson.edges'), { node: { spotlight: true } }), 'node');
 
 		return (
 			<ThemeProvider {...theme}>
@@ -42,7 +44,7 @@ class TemplateWrapper extends Component {
 								<h4>Mac Select</h4>
 								<Link to="/">Home</Link>
 								<Link to="/aanbod">Huidig aanbod</Link>
-								<Link to="/verkopen">Uw Mac verkopen</Link>
+								{ spotlight && <Link to={`/aanbod/${spotlight.fields.slug}`}>Uw beste optie</Link> }
 							</div>
 							<div>
 								<h4>Hulp en informatie</h4>
@@ -68,3 +70,19 @@ class TemplateWrapper extends Component {
 }
 
 export default TemplateWrapper;
+
+// eslint-disable-next-line no-undef
+export const pageQuery = graphql`
+	query LayoutQuery {
+		allAanbodJson {
+			edges {
+				node {
+					fields {
+						slug
+					}
+					spotlight
+				}
+			}
+		}
+	}
+`;
