@@ -12,6 +12,7 @@ module.exports = {
 		'gatsby-transformer-json',
 		'gatsby-plugin-sitemap',
 		'gatsby-plugin-catch-links',
+		'gatsby-plugin-lodash',
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
