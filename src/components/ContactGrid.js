@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { container } from '../mixins';
 
-const UnstyledContactGridItem = (props) => props.href ? <a {...props} /> : <div {...props} />;
+const UnstyledContactGridItem = (props) => props.href ? <a {...props} target="_blank" /> : <div {...props} />;
 
 const ContactGridItem = styled(UnstyledContactGridItem)`
 	align-items: center;
