@@ -13,7 +13,6 @@ module.exports = {
 		'gatsby-plugin-sitemap',
 		'gatsby-plugin-catch-links',
 		'gatsby-plugin-lodash',
-		'gatsby-plugin-offline',
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
@@ -42,6 +41,18 @@ module.exports = {
 				anonymize: true,
 				respectDNT: true
 			}
-		}
+		},
+		{
+			resolve: 'gatsby-plugin-manifest',
+			options: {
+				name: 'Mac Select',
+				short_name: 'Mac Select',
+				start_url: '/',
+				background_color: '#ffffff',
+				theme_color: '#ffffff',
+				display: 'standalone'
+			}
+		},
+		'gatsby-plugin-offline'
 	]
 };
