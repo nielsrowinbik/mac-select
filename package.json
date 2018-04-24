@@ -1,13 +1,20 @@
 {
 	"name": "mac-select",
+	"version": "1.0.0",
 	"description": "Mac Select website",
-	"version": "0.0.1",
-	"author": "Niels Bik <hey@nielsbik.nl>",
+	"homepage": "https://www.mac-select.nl",
+	"bugs": "https://github.com/nielsrowinbik/mac-select/issues",
 	"license": "MIT",
+	"author": "Niels Bik <hey@nielsbik.nl> (https://nielsbik.nl)",
+	"repository": "nielsrowinbik/mac-select",
 	"scripts": {
 		"dev": "gatsby develop --port 8080",
 		"build": "gatsby build",
 		"serve": "gatsby serve"
+	},
+	"devDependencies": {
+		"eslint": "^4.19.1",
+		"eslint-config-synacor": "^3.0.1"
 	},
 	"dependencies": {
 		"gatsby": "^1.9.250",
@@ -34,10 +41,6 @@
 		"slick-carousel": "^1.8.1",
 		"styled-components": "^3.2.5",
 		"typeface-open-sans": "^0.0.54"
-	},
-	"devDependencies": {
-		"eslint": "^4.19.1",
-		"eslint-config-synacor": "^3.0.1"
 	},
 	"eslintConfig": {
 		"extends": "eslint-config-synacor"
