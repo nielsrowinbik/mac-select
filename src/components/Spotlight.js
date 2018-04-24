@@ -59,7 +59,7 @@ const UnstyledSpotlight = ({ product, ...props }) => (
 		<Header>
 			<h1>Uw beste optie</h1>
 			<p>De beste tweedehands {product.type} die Mac Select u op dit moment te bieden heeft.</p>
-			<p><Link to={`/aandbod/${product.fields.slug}`}>Meer informatie</Link></p>
+			<p><Link to={`/aanbod/${product.fields.slug}`}>Meer informatie</Link></p>
 		</Header>
 		<Hr />
 		<ImageContainer to={`/aanbod/${product.fields.slug}`}>
