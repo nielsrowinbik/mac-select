@@ -1,8 +1,9 @@
 import React from 'react';
 import Main from '../components/Main';
-import moment from 'moment';
 import Helmet from 'react-helmet';
 import Blog, { BlogHeader, BlogBanner, BlogContent } from '../components/Blog';
+import format from 'date-fns/format';
+import nl from 'date-fns/locale/nl';
 
 const BlogPostTemplate = ({
 	banner,
@@ -19,7 +20,7 @@ const BlogPostTemplate = ({
 			<BlogBanner src={banner} />
 			<Blog>
 				<BlogHeader>
-					<span>{ moment(date).locale('nl').format('D MMMM, YYYY') }</span>
+					<span>{ format(date, 'D MMMM, YYYY', nl) }</span>
 					<h1>{ title }</h1>
 				</BlogHeader>
 				{ isCMSPreview

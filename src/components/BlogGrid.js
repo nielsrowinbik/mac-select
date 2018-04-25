@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
 import { container } from '../mixins';
-import moment from 'moment';
+import format from 'date-fns/format';
+import nl from 'date-fns/locale/nl';
 
 const BlogGrid = styled.section`
 	${container}
@@ -15,7 +16,7 @@ const BlogGrid = styled.section`
 const UnstyledBlogGridItem = ({ date, title, src, ...props }) => (
 	<Link {...props}>
 		<div>
-			<span>{ moment(date).locale('nl').format('D MMMM, YYYY') }</span>
+			<span>{ format(date, 'D MMMM, YYYY', nl) }</span>
 			<p>{title}</p>
 		</div>
 		<img src={src} />
