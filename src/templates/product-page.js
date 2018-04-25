@@ -25,6 +25,20 @@ const SliderSection = styled.section`
 	padding-bottom: 36px;
 `;
 
+const TempImageSection = styled.section`
+	display: flex;
+	flex-wrap: nowrap;
+	height: 300px;
+	margin-bottom: 36px;
+	overflow: auto;
+	width: 100%;
+
+	& > img {
+		display: block;
+		height: 100%;
+	}
+`;
+
 const ProductPageTemplate = ({
 	isCMSPreview,
 	...product
@@ -41,9 +55,13 @@ const ProductPageTemplate = ({
 					<Link to="/contact">Koop deze {product.type} direct!</Link>
 				</p>
 			</ProductHeader>
-			<SliderSection>
-				<Slider images={map(product.images, ({ image }) => image)} />
-			</SliderSection>
+			{ isCMSPreview ? (
+				<TempImageSection length={product.images.length}>{ map(product.images, ({ image }) => <img src={image} />) }</TempImageSection>
+			) : (
+				<SliderSection>
+					<Slider images={map(product.images, ({ image }) => image)} />
+				</SliderSection>
+			) }
 			{product.description && <ProductSection>{ product.description }</ProductSection> }
 			<ProductSpecsTable
 				product={product}

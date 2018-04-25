@@ -3,4 +3,4 @@ import BlogPostPreview from './previews/BlogPostPreview';
 import ProductPagePreview from './previews/ProductPagePreview';
 
 CMS.registerPreviewTemplate('blog', BlogPostPreview);
-CMS.registerPreviewTemplate('listing', ProductPagePreview);
+CMS.registerPreviewTemplate('products', ProductPagePreview);
