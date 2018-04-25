@@ -43,76 +43,74 @@ const ProductPageTemplate = ({
 	isCMSPreview,
 	...product
 }) => (
-	<React.Fragment>
+	<Main bg="#f6f6f6">
 		{ !isCMSPreview && <Helmet title={`${product.title} - Het huidige aanbod tweedehands Macs, iMacs, en Macbooks`} /> }
-		<Main bg="#f6f6f6">
-			<ProductHeader>
-				<h1>{ product.title }</h1>
-				<h2>
-					<s>&euro;{parseFloat(product.price.old).toFixed(2)}</s>&nbsp;&nbsp;<strong>&euro;{parseFloat(product.price.new).toFixed(2)}</strong>
-				</h2>
-				<p>
-					<Link to="/contact">Koop deze {product.type} direct!</Link>
-				</p>
-			</ProductHeader>
-			{ isCMSPreview ? (
-				<TempImageSection length={product.images.length}>{ map(product.images, ({ image }) => <img src={image} />) }</TempImageSection>
-			) : (
-				<SliderSection>
-					<Slider images={map(product.images, ({ image }) => image)} />
-				</SliderSection>
-			) }
-			{product.description && <ProductSection>{ product.description }</ProductSection> }
-			<ProductSpecsTable
-				product={product}
-				rows={[
-					{
-						label: 'Type product',
-						value: 'Apple ${type}'
-					},
-					{
-						label: 'Formaat',
-						value: '${size} inch'
-					},
-					{
-						label: 'Staat',
-						value: 'state'
-					},
-					{
-						label: 'Processor',
-						value: '${cpu.name} (${cpu.speed} GHz)'
-					},
-					{
-						label: 'Werkgeheugen',
-						value: '${ram} GB'
-					},
-					{
-						label: 'Opslag',
-						value: '${storage.amount} GB opslag (${storage.type})'
-					},
-					{
-						label: 'Grafische kaart',
-						value: '${gpu.name} (${gpu.memory} MB geheugen)'
-					},
-					{
-						label: 'Orginele doos',
-						value: '${other.box ? \'Ja\' : \'Nee\'}'
-					},
-					{
-						label: 'Orgineel aankoopbewijs',
-						value: '${other.receipt ? \'Ja\' : \'Nee\'}'
-					},
-					{
-						label: 'Productsoort',
-						value: '${other.vat ? \'BTW\' : \'Marge\'}'
-					}
-				]}
-			/>
-			<ProductFooter>
-				<h1><Link to="/contact">Klik hier voor een vraag of afspraak</Link></h1>
-			</ProductFooter>
-		</Main>
-	</React.Fragment>
+		<ProductHeader>
+			<h1>{ product.title }</h1>
+			<h2>
+				<s>&euro;{parseFloat(product.price.old).toFixed(2)}</s>&nbsp;&nbsp;<strong>&euro;{parseFloat(product.price.new).toFixed(2)}</strong>
+			</h2>
+			<p>
+				<Link to="/contact">Koop deze {product.type} direct!</Link>
+			</p>
+		</ProductHeader>
+		{ isCMSPreview ? (
+			<TempImageSection length={product.images.length}>{ map(product.images, ({ image }) => <img src={image} />) }</TempImageSection>
+		) : (
+			<SliderSection>
+				<Slider images={map(product.images, ({ image }) => image)} />
+			</SliderSection>
+		) }
+		{product.description && <ProductSection>{ product.description }</ProductSection> }
+		<ProductSpecsTable
+			product={product}
+			rows={[
+				{
+					label: 'Type product',
+					value: 'Apple ${type}'
+				},
+				{
+					label: 'Formaat',
+					value: '${size} inch'
+				},
+				{
+					label: 'Staat',
+					value: 'state'
+				},
+				{
+					label: 'Processor',
+					value: '${cpu.name} (${cpu.speed} GHz)'
+				},
+				{
+					label: 'Werkgeheugen',
+					value: '${ram} GB'
+				},
+				{
+					label: 'Opslag',
+					value: '${storage.amount} GB opslag (${storage.type})'
+				},
+				{
+					label: 'Grafische kaart',
+					value: '${gpu.name} (${gpu.memory} MB geheugen)'
+				},
+				{
+					label: 'Orginele doos',
+					value: '${other.box ? \'Ja\' : \'Nee\'}'
+				},
+				{
+					label: 'Orgineel aankoopbewijs',
+					value: '${other.receipt ? \'Ja\' : \'Nee\'}'
+				},
+				{
+					label: 'Productsoort',
+					value: '${other.vat ? \'BTW\' : \'Marge\'}'
+				}
+			]}
+		/>
+		<ProductFooter>
+			<h1><Link to="/contact">Klik hier voor een vraag of afspraak</Link></h1>
+		</ProductFooter>
+	</Main>
 );
 
 const ProductPage = (props) => {

@@ -10,20 +10,10 @@ import { find, get } from 'lodash';
 
 injectGlobal`${global}`;
 
-const onWindowLoad = () => {
-	navigator.serviceWorker.register('/sw.js')
-		.then((registration) => registration.waiting && registration.waiting.postMessage('skipWaiting'))
-		.catch((error) => console.warn(`Couldn't register SW:`, error));
-};
-
 class TemplateWrapper extends Component {
 	state = {
 		isOpen: false,
 		toggleOpen: (val) => (event) => this.setState({ isOpen: val === undefined ? !this.state.isOpen : val })
-	}
-
-	componentDidMount() {
-		if ('serviceWorker' in window.navigator) window.addEventListener('load', onWindowLoad);
 	}
 
 	render = () => {
@@ -33,7 +23,7 @@ class TemplateWrapper extends Component {
 
 		return (
 			<ThemeProvider {...theme}>
-				<React.Fragment>
+				<div id="app">
 					<Helmet
 						title="Mac Select - Het adres voor het kopen en verkopen van een tweedehands Mac, iMac, of Macbook"
 						titleTemplate="%s - Mac Select"
@@ -73,7 +63,7 @@ class TemplateWrapper extends Component {
 							<span>Copyright © 2018 Mac Select. Website gerealiseerd door <a href="https://nielsbik.nl">Niels Bik</a>.</span>
 						</section>
 					</Footer>
-				</React.Fragment>
+				</div>
 			</ThemeProvider>
 		);
 	}

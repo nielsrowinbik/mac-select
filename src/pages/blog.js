@@ -10,35 +10,31 @@ const BlogPage = (props) => {
 	const { allMarkdownRemark } = data;
 
 	if (!allMarkdownRemark) return (
-		<React.Fragment>
+		<Main bg="#f6f6f6">
 			<Helmet title="Blog" />
-			<Main bg="#f6f6f6">
-				<PageHeader>
-					<p>Mac Select heeft op dit moment geen artikelen online staan.</p>
-				</PageHeader>
-			</Main>
-		</React.Fragment>
+			<PageHeader>
+				<p>Mac Select heeft op dit moment geen artikelen online staan.</p>
+			</PageHeader>
+		</Main>
 	);
 
 	const { edges: posts } = allMarkdownRemark;
 
 	return (
-		<React.Fragment>
+		<Main bg="#f6f6f6">
 			<Helmet title="Blog" />
-			<Main bg="#f6f6f6">
-				<BlogGrid>
-					{ map(posts, ({ node: post }) => (
-						<BlogGridItem
-							date={get(post, 'frontmatter.date')}
-							src={get(post, 'frontmatter.banner')}
-							title={get(post, 'frontmatter.title')}
-							to={`/blog/${get(post, 'fields.slug')}`}
-							key={get(post, 'id')}
-						/>
-					))}
-				</BlogGrid>
-			</Main>
-		</React.Fragment>
+			<BlogGrid>
+				{ map(posts, ({ node: post }) => (
+					<BlogGridItem
+						date={get(post, 'frontmatter.date')}
+						src={get(post, 'frontmatter.banner')}
+						title={get(post, 'frontmatter.title')}
+						to={`/blog/${get(post, 'fields.slug')}`}
+						key={get(post, 'id')}
+					/>
+				))}
+			</BlogGrid>
+		</Main>
 	);
 };
 

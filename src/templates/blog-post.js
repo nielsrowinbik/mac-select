@@ -14,21 +14,19 @@ const BlogPostTemplate = ({
 	isCMSPreview,
 	title
 }) => (
-	<React.Fragment>
+	<Main bg="#f6f6f6" style={{ paddingTop: 0 }}>
 		{ !isCMSPreview && <Helmet title={`${title} - Blog`} /> }
-		<Main bg="#f6f6f6" style={{ paddingTop: 0 }}>
-			<BlogBanner src={banner} />
-			<Blog>
-				<BlogHeader>
-					<span>{ format(date, 'D MMMM, YYYY', nl) }</span>
-					<h1>{ title }</h1>
-				</BlogHeader>
-				{ isCMSPreview
-					? <BlogContent>{ content }</BlogContent>
-					: <BlogContent dangerouslySetInnerHTML={{ __html: html }} /> }
-			</Blog>
-		</Main>
-	</React.Fragment>
+		<BlogBanner src={banner} />
+		<Blog>
+			<BlogHeader>
+				<span>{ format(date, 'D MMMM, YYYY', nl) }</span>
+				<h1>{ title }</h1>
+			</BlogHeader>
+			{ isCMSPreview
+				? <BlogContent>{ content }</BlogContent>
+				: <BlogContent dangerouslySetInnerHTML={{ __html: html }} /> }
+		</Blog>
+	</Main>
 );
 
 const BlogPost = (props) => {

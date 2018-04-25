@@ -6,6 +6,7 @@ module.exports = {
 		siteUrl: 'https://www.mac-select.nl'
 	},
 	plugins: [
+		'gatsby-plugin-preact',
 		'gatsby-plugin-react-helmet',
 		'gatsby-plugin-styled-components',
 		'gatsby-transformer-remark',
