@@ -53,7 +53,7 @@ module.exports = {
 				display: 'standalone',
 				icon: 'src/icon.png'
 			}
-		}/*,
-		'gatsby-plugin-remove-serviceworker'*/
+		},
+		'gatsby-plugin-remove-serviceworker'
 	]
 };
