@@ -14,7 +14,8 @@
 	},
 	"devDependencies": {
 		"eslint": "^4.19.1",
-		"eslint-config-synacor": "^3.0.1"
+		"eslint-config-synacor": "^3.0.1",
+		"workbox-webpack-plugin": "^3.1.0"
 	},
 	"dependencies": {
 		"gatsby": "^1.9.250",
@@ -24,8 +25,8 @@
 		"gatsby-plugin-lodash": "^1.0.11",
 		"gatsby-plugin-manifest": "^1.0.20",
 		"gatsby-plugin-netlify-cms": "^2.0.1",
-		"gatsby-plugin-offline": "^1.0.15",
 		"gatsby-plugin-react-helmet": "^2.0.10",
+		"gatsby-plugin-remove-serviceworker": "^1.0.0",
 		"gatsby-plugin-sitemap": "^1.2.22",
 		"gatsby-plugin-styled-components": "^2.0.11",
 		"gatsby-source-filesystem": "^1.5.31",

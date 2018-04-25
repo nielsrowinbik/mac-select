@@ -10,10 +10,20 @@ import { find, get } from 'lodash';
 
 injectGlobal`${global}`;
 
+const onWindowLoad = () => {
+	navigator.serviceWorker.register('/sw.js')
+		.then((registration) => registration.waiting && registration.waiting.postMessage('skipWaiting'))
+		.catch((error) => console.warn(`Couldn't register SW:`, error));
+};
+
 class TemplateWrapper extends Component {
 	state = {
 		isOpen: false,
 		toggleOpen: (val) => (event) => this.setState({ isOpen: val === undefined ? !this.state.isOpen : val })
+	}
+
+	componentDidMount() {
+		if ('serviceWorker' in window.navigator) window.addEventListener('load', onWindowLoad);
 	}
 
 	render = () => {
