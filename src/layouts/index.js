@@ -25,7 +25,7 @@ class TemplateWrapper extends Component {
 			<ThemeProvider {...theme}>
 				<div id="app">
 					<Helmet
-						title="Mac Select - Het adres voor het kopen en verkopen van een tweedehands Mac, iMac, of Macbook"
+						defaultTitle="Mac Select - Het adres voor het kopen en verkopen van een tweedehands Mac, iMac, of Macbook"
 						titleTemplate="%s - Mac Select"
 					/>
 					<Navigation isOpen={isOpen} toggleOpen={toggleOpen()}>
