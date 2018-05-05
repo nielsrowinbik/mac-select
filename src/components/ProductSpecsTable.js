@@ -27,20 +27,21 @@ const ProductSpecsTable = styled(UnstyledProductSpecsTable)`
 		border-collapse: collapse;
 
 		& > tbody > tr {
+			display: flex;
 
 			:nth-child(odd) {
 				background-color: #eceef0;
 			}
 
 			& > td {
-				display: inline-block;
+				align-items: center;
+				display: inline-flex;
 				padding: 9px 17px;
 
 				&:first-child {
 					font-weight: 400;
 					min-width: 155px;
 					width: 12.5vw;
-					white-space: nowrap;
 				}
 
 				&:last-child {
