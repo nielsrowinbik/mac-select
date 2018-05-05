@@ -5,7 +5,22 @@
   YARN_VERSION = "1.3.2"
   YARN_FLAGS = "--no-ignore-optional"
 [[redirects]]
-from = "https://admin.mac-select.nl/*"
-to = "https://www.mac-select/com/admin/"
-status = 301
-force = true
+  from = "https://admin.mac-select.nl/*"
+  to = "https://www.mac-select/com/admin/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/aanbod/:id/:slug"
+  to = "/aanbod/:slug"
+  status = 301
+  force = false
+[[redirects]]
+  from = "/blog/:date/:month/:year/:id/:slug"
+  to = "/blog/:slug"
+  status = 301
+  force = false
+[[redirects]]
+  from = "/verkopen"
+  to = "/hulp#verkoop"
+  status = 301
+  force = false
