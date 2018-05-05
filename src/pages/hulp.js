@@ -14,9 +14,19 @@ const HulpHeader = PageHeader.extend`
 const HulpPage = (props) => {
 	const posts = get(props, 'data.allFile.edges');
 
+	const title = 'Hulp bij het kopen en verkopen van een tweedehands Mac';
+	const description = 'Het is voor Mac Select belangrijk dat u weet waar u aan toe bent. Wij helpen u graag, zowel bij het kopen als het verkopen.';
+	const Head = (
+		<Helmet title={title}>
+			<meta name="description" content={description} />
+			<meta property="og:title" content={`${title} - Mac Select`} />
+			<meta property="og:description" content={description} />
+		</Helmet>
+	);
+
 	return (
 		<Main>
-			<Helmet title="Hulp bij het kopen en verkopen van een tweedehands Mac" />
+			{Head}
 			<HulpHeader>
 				<h1>Mac Select helpt u</h1>
 				<p>

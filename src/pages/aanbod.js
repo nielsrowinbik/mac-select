@@ -14,9 +14,19 @@ const AanbodPage = (props) => {
 	const { data = {} } = props;
 	const { allFile } = data;
 
+	const title = 'Het huidige aanbod tweedehands Macs, iMacs, en Macbooks';
+	const description = 'Het aanbod van Mac Select bestaat uit zorgvuldig geselecteerde en betrouwbare tweedehands Macs, iMacs, en Macbooks. Heeft u hulp nodig met kiezen? Mac Select helpt u graag.';
+	const Head = (
+		<Helmet title={title}>
+			<meta name="description" content={description} />
+			<meta property="og:title" content={`${title} - Mac Select`} />
+			<meta property="og:description" content={description} />
+		</Helmet>
+	);
+
 	if (!allFile) return (
 		<Main bg="#f6f6f6">
-			<Helmet title="Blog" />
+			{Head}
 			<PageHeader>
 				<p>Mac Select heeft op dit moment geen producten online staan.</p>
 			</PageHeader>
@@ -27,7 +37,7 @@ const AanbodPage = (props) => {
 	
 	return (
 		<Main bg="#f6f6f6">
-			<Helmet title="Het huidige aanbod tweedehands Macs, iMacs, en Macbooks" />
+			{Head}
 			<AanbodHeader>
 				<h1>Het huidige Mac Select aanbod</h1>
 				<Link to="/hulp">Help me met kiezen</Link>

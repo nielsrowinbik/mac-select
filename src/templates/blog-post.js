@@ -5,29 +5,34 @@ import Blog, { BlogHeader, BlogBanner, BlogContent } from '../components/Blog';
 import format from 'date-fns/format';
 import nl from 'date-fns/locale/nl';
 
-const BlogPostTemplate = ({
-	banner,
-	content,
-	date,
-	description,
-	html,
-	isCMSPreview,
-	title
-}) => (
-	<Main bg="#f6f6f6" style={{ paddingTop: 0 }}>
-		{ !isCMSPreview && <Helmet title={`${title} - Blog`} /> }
-		<BlogBanner src={banner} />
-		<Blog>
-			<BlogHeader>
-				<span>{ format(date, 'D MMMM, YYYY', nl) }</span>
-				<h1>{ title }</h1>
-			</BlogHeader>
-			{ isCMSPreview
-				? <BlogContent>{ content }</BlogContent>
-				: <BlogContent dangerouslySetInnerHTML={{ __html: html }} /> }
-		</Blog>
-	</Main>
-);
+const BlogPostTemplate = (props) => {
+	const { isCMSPreview, ...blog } = props;
+
+	const title = `${blog.title} - Blog`;
+	const url = `${window.location.protocol}//${window.location.host}`;
+	const Head = (
+		<Helmet title={title}>
+			<meta property="og:title" content={`${title} - Mac Select`} />
+			<meta property="og:image" content={`${url}${blog.banner}`} />
+		</Helmet>
+	);
+
+	return (
+		<Main bg="#f6f6f6" style={{ paddingTop: 0 }}>
+			{ !isCMSPreview && Head }
+			<BlogBanner src={blog.banner} />
+			<Blog>
+				<BlogHeader>
+					<span>{ format(blog.date, 'D MMMM, YYYY', nl) }</span>
+					<h1>{blog.title}</h1>
+				</BlogHeader>
+				{ isCMSPreview
+					? <BlogContent>{blog.content}</BlogContent>
+					: <BlogContent dangerouslySetInnerHTML={{ __html: blog.html }} /> }
+			</Blog>
+		</Main>
+	);
+};
 
 const BlogPost = (props) => {
 	const { data } = props;

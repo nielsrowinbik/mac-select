@@ -21,13 +21,26 @@ class TemplateWrapper extends Component {
 		const { isOpen, toggleOpen } = this.state;
 		const spotlight = get(find(get(data, 'allAanbodJson.edges'), { node: { spotlight: true } }), 'node');
 
+		const title = 'Mac Select - Het adres voor het kopen en verkopen van een tweedehands Mac, iMac, of Macbook';
+		const description = 'Op zoek naar een tweedehands Mac, iMac, of Macbook? Bij Mac Select bent u aan het juiste adres! Wij hebben met zorg geselecteerde en betrouwbare tweedehands Macs te koop.';
+
 		return (
 			<ThemeProvider {...theme}>
 				<div id="app">
 					<Helmet
-						defaultTitle="Mac Select - Het adres voor het kopen en verkopen van een tweedehands Mac, iMac, of Macbook"
+						defaultTitle={title}
 						titleTemplate="%s - Mac Select"
-					/>
+					>
+						<html lang="nl" />
+						<meta name="description" content={description} />
+						<meta property="og:site_name" content="Mac Select" />
+						<meta property="og:locale" content="nl_NL" />
+						<meta property="og:title" content={title} />
+						<meta property="og:description" content={description} />
+						<meta property="og:type" content="website" />
+						<meta property="og:url" content={window.location.href} />
+						<meta property="og:image" content="https://www.mac-select.nl/assets/images/mac_book_pro_2016.png" />
+					</Helmet>
 					<Navigation isOpen={isOpen} toggleOpen={toggleOpen()}>
 						<Link exact to="/"><h1>Mac Select</h1></Link>
 						<nav onClick={toggleOpen(false)}>

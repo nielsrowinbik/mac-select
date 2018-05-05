@@ -9,9 +9,19 @@ const BlogPage = (props) => {
 	const { data } = props;
 	const { allMarkdownRemark } = data;
 
+	const title = 'Blog';
+	const description = 'Met de Mac Select blog bent u altijd op de hoogte van de laatste informatie over nieuwe en tweedehands Mac, iMac en MacBook computers.';
+	const Head = (
+		<Helmet title={title}>
+			<meta name="description" content={description} />
+			<meta property="og:title" content={`${title} - Mac Select`} />
+			<meta property="og:description" content={description} />
+		</Helmet>
+	);
+
 	if (!allMarkdownRemark) return (
 		<Main bg="#f6f6f6">
-			<Helmet title="Blog" />
+			{Head}
 			<PageHeader>
 				<p>Mac Select heeft op dit moment geen artikelen online staan.</p>
 			</PageHeader>
@@ -22,7 +32,7 @@ const BlogPage = (props) => {
 
 	return (
 		<Main bg="#f6f6f6">
-			<Helmet title="Blog" />
+			{Head}
 			<BlogGrid>
 				{ map(posts, ({ node: post }) => (
 					<BlogGridItem
