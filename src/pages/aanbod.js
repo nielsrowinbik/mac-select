@@ -73,7 +73,7 @@ const AanbodPage = (props) => {
 									{ (other && other.box) && <p>In originele doos</p> }
 									<p>Meer informatie</p>
 								</div>
-								<img src={get(images, '[0].image')} />
+								<img alt={product.title} src={get(images, '[0].image')} />
 							</div>
 						</ProductGridItem>
 					);

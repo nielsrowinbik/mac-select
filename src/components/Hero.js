@@ -2,9 +2,9 @@ import React from 'react';
 import { container } from '../mixins';
 import styled from 'styled-components';
 
-const UnstyledHero = ({ children, src, ...props }) => (
+const UnstyledHero = ({ alt, children, src, ...props }) => (
 	<section {...props}>
-		{src && <img src={src} />}
+		{src && <img alt={alt} src={src} />}
 		<div>{children}</div>
 	</section>
 );

@@ -63,7 +63,7 @@ const UnstyledSpotlight = ({ product, ...props }) => (
 		</Header>
 		<Hr />
 		<ImageContainer to={`/aanbod/${product.fields.slug}`}>
-			<img src={get(product, 'images[0].image')} />
+			<img alt={product.title} src={get(product, 'images[0].image')} />
 		</ImageContainer>
 	</section>
 );
