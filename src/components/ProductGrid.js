@@ -5,6 +5,7 @@ import { container } from '../mixins';
 const ProductGridItem = styled(Link)`
 	${container}
 	color: inherit;
+	max-width: 800px;
 
 	:hover {
 		text-decoration: none;
@@ -58,8 +59,8 @@ const ProductGridItem = styled(Link)`
 `;
 
 const ProductGrid = styled.div`
-	display: grid;
-	grid-row-gap: 60px;
+	display: flex;
+	flex-direction: column;
 `;
 
 export { ProductGrid, ProductGridItem };
