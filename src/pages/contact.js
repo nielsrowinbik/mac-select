@@ -40,7 +40,7 @@ const ContactPage = (props) => (
 					Stuur direct een bericht naar Mac Select via onderstaand formulier.<br />
 					Er wordt zo snel mogelijk contact met u opgenomen.
 				</p>
-				<form name="contact" netlify>
+				<form name="contact" data-netlify="true">
 					<Input
 						placeholder="Naam"
 						required
