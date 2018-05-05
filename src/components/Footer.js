@@ -27,17 +27,13 @@ const Footer = styled(UnstyledFooter)`
 
 		&:last-child {
 			font-size: 0.85rem;
-			color: ${({ theme }) => theme.text.secondary};
 			padding: 8px 0 12px 0;
 			margin-top: 24px;
 			border-top: 1px solid #e7e7e7;
 
 			a {
 				color: inherit;
-
-				:hover {
-					color: ${({ theme }) => theme.text.primary};
-				}
+				font-weight: 500;
 			}
 		}
 	}
