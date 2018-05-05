@@ -135,6 +135,7 @@ export const pageQuery = graphql`
 				speed
 			}
 			gpu {
+				memory
 				name
 			}
 			images {

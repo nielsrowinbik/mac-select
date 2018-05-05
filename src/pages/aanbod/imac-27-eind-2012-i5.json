@@ -3,19 +3,19 @@
   "templateKey": "product-page",
   "release": {
     "prefix": "Eind",
-    "year": "2012"
+    "year": 2012
   },
   "cpu": {
     "name": "i5",
-    "speed": "3.2"
+    "speed": 3.2
   },
   "price": {
-    "old": "2099",
-    "new": "1099"
+    "old": 2099,
+    "new": 1099
   },
   "gpu": {
     "name": "NVIDIA GeForce 675X",
-    "memory": "1024"
+    "memory": 1024
   },
   "date": "2018-04-23T15:48:23+02:00",
   "other": {
@@ -47,8 +47,8 @@
   ],
   "type": "iMac",
   "storage": {
-    "amount": "1000",
+    "amount": 1000,
     "type": "Harddisk"
   },
-  "ram": "8"
+  "ram": 8
 }
