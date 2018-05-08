@@ -1,7 +1,7 @@
 const { createFilePath } = require('gatsby-source-filesystem');
 const { get, trim } = require('lodash');
 const path = require('path');
-// const WebpackWorkboxPlugin = require('workbox-webpack-plugin');
+const workboxBuild = require('workbox-build');
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
 	const { createPage } = boundActionCreators;
@@ -73,12 +73,18 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
 	}
 };
 
-// exports.modifyWebpackConfig = ({ config, stage }) => {
-// 	if (stage !== 'build-javascript') return config;
+exports.onPostBuild = (args, pluginOptions) => {
+	const rootDir = 'public';
 
-// 	config.plugin('workbox-webpack', WebpackWorkboxPlugin.GenerateSW, [{
-// 		swDest: path.resolve(__dirname, 'public/sw.js')
-// 	}]);
-
-// 	return config;
-// };
+	return workboxBuild.generateSW({
+		globDirectory: rootDir,
+		globPatterns: [
+			'**/*.{jpg,png,woff2}',
+			'**/*commons-*js',
+			'**/*app-*js',
+			'**/*index.html',
+			'**/*manifest.json'
+		],
+		swDest: 'public/sw.js'
+	});
+};

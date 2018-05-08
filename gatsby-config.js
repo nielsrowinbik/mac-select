@@ -43,18 +43,17 @@ module.exports = {
 				respectDNT: true
 			}
 		},
-		{
-			resolve: 'gatsby-plugin-manifest',
-			options: {
-				name: 'Mac Select',
-				short_name: 'Mac Select',
-				start_url: '/',
-				background_color: '#ffffff',
-				theme_color: '#ffffff',
-				display: 'standalone',
-				icon: 'src/icon.png'
-			}
-		},
-		'gatsby-plugin-remove-serviceworker'
+		// {
+		// 	resolve: 'gatsby-plugin-manifest',
+		// 	options: {
+		// 		name: 'Mac Select',
+		// 		short_name: 'Mac Select',
+		// 		start_url: '/',
+		// 		background_color: '#ffffff',
+		// 		theme_color: '#ffffff',
+		// 		display: 'standalone',
+		// 		icon: 'src/icon.png'
+		// 	}
+		// },
 	]
 };
