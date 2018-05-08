@@ -21,6 +21,7 @@ class TemplateWrapper extends Component {
 		const { isOpen, toggleOpen } = this.state;
 		const spotlight = get(find(get(data, 'allAanbodJson.edges'), { node: { spotlight: true } }), 'node');
 
+		const windowGlobal = typeof window !== 'undefined' && window;
 		const title = 'Mac Select - Het adres voor het kopen en verkopen van een tweedehands Mac, iMac, of Macbook';
 		const description = 'Op zoek naar een tweedehands Mac, iMac, of Macbook? Bij Mac Select bent u aan het juiste adres! Wij hebben met zorg geselecteerde en betrouwbare tweedehands Macs te koop.';
 
@@ -38,7 +39,7 @@ class TemplateWrapper extends Component {
 						<meta property="og:title" content={title} />
 						<meta property="og:description" content={description} />
 						<meta property="og:type" content="website" />
-						<meta property="og:url" content={window.location.href} />
+						<meta property="og:url" content={get(windowGlobal, 'location.href')} />
 						<meta property="og:image" content="https://www.mac-select.nl/assets/images/mac_book_pro_2016.png" />
 					</Helmet>
 					<Navigation isOpen={isOpen} toggleOpen={toggleOpen()}>

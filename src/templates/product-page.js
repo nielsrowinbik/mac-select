@@ -5,7 +5,7 @@ import Link from 'gatsby-link';
 import PageHeader from '../components/PageHeader';
 import ProductSpecsTable from '../components/ProductSpecsTable';
 import { container } from '../mixins';
-import { map, omit } from 'lodash';
+import { get, map, omit } from 'lodash';
 import styled from 'styled-components';
 import Slider from '../components/Slider';
 
@@ -42,9 +42,10 @@ const TempImageSection = styled.section`
 const ProductPageTemplate = (props) => {
 	const { isCMSPreview, ...product } = props;
 
+	const windowGlobal = typeof window !== 'undefined' && window;
 	const title = `${product.title} - Het huidige aanbod tweedehands Macs, iMacs, en Macbooks`;
 	const description = `${product.title} van €${product.price.old} voor €${product.price.new}. Bij Mac Select worden tweedehands iMacs als deze met zorg voor u uitgezocht.`;
-	const url = `${window.location.protocol}//${window.location.host}`;
+	const url = `${get(windowGlobal, 'location.protocol')}//${get(windowGlobal, 'location.host')}`;
 	const Head = (
 		<Helmet title={title}>
 			<meta name="description" content={description} />

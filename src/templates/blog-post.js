@@ -4,12 +4,14 @@ import Helmet from 'react-helmet';
 import Blog, { BlogHeader, BlogBanner, BlogContent } from '../components/Blog';
 import format from 'date-fns/format';
 import nl from 'date-fns/locale/nl';
+import { get } from 'lodash';
 
 const BlogPostTemplate = (props) => {
 	const { isCMSPreview, ...blog } = props;
 
+	const windowGlobal = typeof window !== 'undefined' && window;
 	const title = `${blog.title} - Blog`;
-	const url = `${window.location.protocol}//${window.location.host}`;
+	const url = `${get(windowGlobal, 'location.protocol')}//${get(windowGlobal, 'location.host')}`;
 	const Head = (
 		<Helmet title={title}>
 			<meta property="og:title" content={`${title} - Mac Select`} />
