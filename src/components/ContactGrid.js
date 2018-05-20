@@ -26,7 +26,7 @@ const ContactGridItem = styled(UnstyledContactGridItem)`
 
 	& > form {
 		margin: 0 auto;
-		width: 65%;
+		width: 95%;
 
 		input,
 		textarea {
@@ -35,6 +35,10 @@ const ContactGridItem = styled(UnstyledContactGridItem)`
 			&:not(:last-child) {
 				margin-bottom: 10px;
 			}
+		}
+
+		@media (min-width: 701px) {
+			width: 65%;
 		}
 	}
 
