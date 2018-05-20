@@ -7,6 +7,7 @@ import Navigation from '../components/Navigation';
 import { injectGlobal, ThemeProvider } from 'styled-components';
 import { global, theme } from '../mixins';
 import { find, get } from 'lodash';
+import Heart from '../components/Heart';
 
 injectGlobal`${global}`;
 
@@ -74,7 +75,7 @@ class TemplateWrapper extends Component {
 							</div>
 						</section>
 						<section>
-							<span>Copyright © 2018 Mac Select. Website gerealiseerd door <a href="https://nielsbik.nl">Niels Bik</a>.</span>
+							<span>Met <Heart /> gebouwd door <a href="https://vrwrts.io">vrwrts</a> — Copyright 2018</span>
 						</section>
 					</Footer>
 				</div>

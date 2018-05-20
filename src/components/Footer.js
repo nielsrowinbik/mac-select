@@ -9,6 +9,7 @@ const Footer = styled(UnstyledFooter)`
 	& > section {
 		${container}
 		display: flex;
+		flex-direction: column;
 
 		&:first-child > div {
 			flex: auto;
@@ -35,6 +36,10 @@ const Footer = styled(UnstyledFooter)`
 				color: inherit;
 				font-weight: 500;
 			}
+		}
+
+		@media (min-width: 701px) {
+			flex-direction: row;
 		}
 	}
 `;
