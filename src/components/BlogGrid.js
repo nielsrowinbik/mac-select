@@ -4,6 +4,7 @@ import Link from 'gatsby-link';
 import { container } from '../mixins';
 import format from 'date-fns/format';
 import nl from 'date-fns/locale/nl';
+import Img from './Img';
 
 const BlogGrid = styled.section`
 	${container}
@@ -19,7 +20,7 @@ const UnstyledBlogGridItem = ({ date, title, src, ...props }) => (
 			<span>{ format(date, 'D MMMM, YYYY', nl) }</span>
 			<p>{title}</p>
 		</div>
-		<img src={src} />
+		<Img alt="Blog post banner" src={src} />
 	</Link>
 );
 

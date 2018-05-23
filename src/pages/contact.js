@@ -5,6 +5,7 @@ import Input, { TextArea } from '../components/Input';
 import Main from '../components/Main';
 import PageHeader from '../components/PageHeader';
 import ContactGrid, { ContactGridItem } from '../components/ContactGrid';
+import Img from '../components/Img';
 
 const ContactHeader = PageHeader.extend`
 	padding-bottom: 56px;
@@ -30,7 +31,7 @@ const ContactPage = (props) => {
 			</ContactHeader>
 			<ContactGrid>
 				<ContactGridItem href="tel:+31647028625">
-					<img alt="Phone icon" src="/assets/images/phone-icon.png" />
+					<Img alt="Phone icon" src="/assets/images/phone-icon.png" />
 					<h2>Telefonisch</h2>
 					<p>
 						U kunt Mac Select op werkdagen bereiken door te bellen
@@ -38,7 +39,7 @@ const ContactPage = (props) => {
 					</p>
 				</ContactGridItem>
 				<ContactGridItem href="mailto:info@mac-select.nl">
-					<img alt="Email icon" src="/assets/images/email-icon.png" />
+					<Img alt="Email icon" src="/assets/images/email-icon.png" />
 					<h2>E-mail</h2>
 					<p>
 						Een e-mail sturen naar <span>info@mac-select.nl</span> levert
@@ -74,7 +75,7 @@ const ContactPage = (props) => {
 					</form>
 				</ContactGridItem>
 				<ContactGridItem href="https://goo.gl/maps/nj6eWzxXzN22">
-					<img alt="Location icon" src="/assets/images/location-icon.png" />
+					<Img alt="Location icon" src="/assets/images/location-icon.png" />
 					<h2>Kom langs</h2>
 					<p>
 						Mac Select is gevestigd aan de <span>Oudedijk
@@ -82,7 +83,7 @@ const ContactPage = (props) => {
 					</p>
 				</ContactGridItem>
 				<ContactGridItem>
-					<img icon="Info icon" src="/assets/images/info-icon.png" />
+					<Img icon="Info icon" src="/assets/images/info-icon.png" />
 					<h2>Overige gegevens</h2>
 					<p>
 						KvK: 65002962

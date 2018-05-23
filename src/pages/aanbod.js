@@ -5,6 +5,7 @@ import PageHeader from '../components/PageHeader';
 import { get, map } from 'lodash';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
+import Img from '../components/Img';
 
 const AanbodHeader = PageHeader.extend`
 	padding-bottom: 56px;
@@ -73,7 +74,7 @@ const AanbodPage = (props) => {
 									{ (other && other.box) && <p>In originele doos</p> }
 									<p>Meer informatie</p>
 								</div>
-								<img alt={product.title} src={get(images, '[0].image')} />
+								<Img alt={product.title} src={get(images, '[0].image')} />
 							</div>
 						</ProductGridItem>
 					);

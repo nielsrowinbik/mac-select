@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Link from 'gatsby-link';
 import { container } from '../mixins';
 import { get } from 'lodash';
+import Img from './Img';
 
 const Header = styled.div`
 	text-align: center;
@@ -63,7 +64,7 @@ const UnstyledSpotlight = ({ product, ...props }) => (
 		</Header>
 		<Hr />
 		<ImageContainer to={`/aanbod/${product.fields.slug}`}>
-			<img alt={product.title} src={get(product, 'images[0].image')} />
+			<Img alt={product.title} src={get(product, 'images[0].image')} />
 		</ImageContainer>
 	</section>
 );

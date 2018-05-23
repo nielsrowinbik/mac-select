@@ -37,7 +37,7 @@ const Heart = styled(UnstyledHeart)`
 	:hover {
 		animation: ${heart} 1.25s ease infinite;
 		cursor: pointer;
-		fill: #ff72a2;
+		fill: #e53935;
 	}
 `;
 
