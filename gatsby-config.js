@@ -6,14 +6,16 @@ module.exports = {
 		siteUrl: 'https://www.mac-select.nl'
 	},
 	plugins: [
-		'gatsby-plugin-preact',
+		// 'gatsby-plugin-preact',
 		'gatsby-plugin-react-helmet',
 		'gatsby-plugin-styled-components',
-		'gatsby-transformer-remark',
-		'gatsby-transformer-json',
 		'gatsby-plugin-sitemap',
 		'gatsby-plugin-catch-links',
 		'gatsby-plugin-lodash',
+		'gatsby-plugin-sharp',
+		'gatsby-transformer-remark',
+		'gatsby-transformer-json',
+		'gatsby-transformer-sharp',
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
@@ -26,6 +28,13 @@ module.exports = {
 			options: {
 				path: path.resolve(__dirname, 'src/pages/aanbod'),
 				name: 'aanbod'
+			}
+		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				path: path.resolve(__dirname, 'static/assets/images'),
+				name: 'images'
 			}
 		},
 		{
@@ -48,7 +57,7 @@ module.exports = {
 			options: {
 				name: 'Mac Select',
 				short_name: 'Mac Select',
-				start_url: '/',
+				start_url: '.',
 				background_color: '#ffffff',
 				theme_color: '#ffffff',
 				display: 'standalone',

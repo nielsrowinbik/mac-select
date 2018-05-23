@@ -48,8 +48,10 @@ const handler = (createPage) => (result) => {
 		const { childAanbodJson, childMarkdownRemark, sourceInstanceName } = node;
 
 		const id = get(childMarkdownRemark || childAanbodJson, 'id');
-		const templateKey = get(childMarkdownRemark, 'frontmatter.templateKey') || childAanbodJson.templateKey;
+		const templateKey = get(childMarkdownRemark, 'frontmatter.templateKey') || get(childAanbodJson, 'templateKey');
 		const slug = get(childMarkdownRemark || childAanbodJson, 'fields.slug');
+
+		if (!templateKey) return;
 
 		createPage({
 			path: `/${sourceInstanceName}/${slug}`,

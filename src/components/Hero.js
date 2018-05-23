@@ -1,10 +1,16 @@
 import React from 'react';
 import { container } from '../mixins';
 import styled from 'styled-components';
+import { isString, isUndefined } from 'lodash';
+import Img from '../components/Img';
 
 const UnstyledHero = ({ alt, children, src, ...props }) => (
 	<section {...props}>
-		{src && <img alt={alt} src={src} />}
+		{isUndefined(src)
+			? null
+			: isString(src)
+				? <Img alt={alt} src={src} />
+				: <Img alt={alt} placeholder={src.sizes.base64} src={src.sizes.src} srcSet={src.sizes.srcSet} />}
 		<div>{children}</div>
 	</section>
 );
@@ -16,9 +22,11 @@ const Hero = styled(UnstyledHero)`
 	padding: 56px 0;
 
 	img {
+		flex: 0 0 100%;
 		object-fit: contain;
 		max-width: 85%;
 		padding: 24px;
+		width: 100%;
 	}
 
 	div {

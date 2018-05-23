@@ -9,7 +9,7 @@ import Spotlight from '../components/Spotlight';
 
 const Home = (props) => {
 	const { data } = props;
-	const { allFile } = data;
+	const { allFile, macbookPro2016, macbookPro2016Alt } = data;
 	const { edges } = allFile;
 
 	const posts = filter(edges, isBlogPost);
@@ -18,7 +18,7 @@ const Home = (props) => {
 
 	return (
 		<Main bg="#f6f6f6">
-			<Hero alt="Mac Select Macbook" src="/assets/images/mac_book_pro_2016.png">
+			<Hero alt="Mac Select Macbook" src={macbookPro2016}>
 				<h1>Welkom bij Mac Select</h1>
 				<h2><Link to="/aanbod">Bekijk het huidige aanbod</Link></h2>
 				<p>
@@ -27,7 +27,7 @@ const Home = (props) => {
 				</p>
 			</Hero>
 			<Spotlight product={spotlight} />
-			<Hero alt="Mac Select Macbook" src="/assets/images/mac_book_pro_2016_alt.png" rtl>
+			<Hero alt="Mac Select Macbook" src={macbookPro2016Alt} rtl>
 				<h1>Uw Mac verkopen</h1>
 				<h2><Link to="/contact">Neem contact op</Link></h2>
 				<p>
@@ -88,6 +88,16 @@ export const pageQuery = graphql`
 						}
 					}
 				}
+			}
+		}
+		macbookPro2016: imageSharp(id: { regex: "/mac_book_pro_2016.png/" }) {
+			sizes(maxWidth: 502) {
+				...GatsbyImageSharpSizes
+			}
+		}
+		macbookPro2016Alt: imageSharp(id: { regex: "/mac_book_pro_2016_alt.png/" }) {
+			sizes(maxWidth: 502) {
+				...GatsbyImageSharpSizes
 			}
 		}
 	}
